@@ -74,19 +74,19 @@ export class CartComponent implements OnInit {
     this.cartService.resetCart();
   }
   submit() {
-    alert("This feature has been closed by developer");
-    // if (this.calculateTotal() > 0) {
-    //   this.loading = true;
-    //   const data = this.cartService.exportOrder();
-    //   this.orderService.checkout(data).subscribe({
-    //     next: (res) => {
-    //       this.redirecting = true;
-    //       window.location.href = res.link;
-    //     },
-    //     error: (err) => {
-    //       console.log(err);
-    //     },
-    //   });
-    // }
+//     alert("This feature has been closed by developer");
+    if (this.calculateTotal() > 0) {
+      this.loading = true;
+      const data = this.cartService.exportOrder();
+      this.orderService.checkout(data).subscribe({
+        next: (res) => {
+          this.redirecting = true;
+          window.location.href = res.link;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+    }
   }
 }
