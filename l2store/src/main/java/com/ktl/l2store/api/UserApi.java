@@ -173,7 +173,6 @@ public class UserApi {
                 .favProducts(new ArrayList<>())
                 .orders(new ArrayList<>())
                 .comboProducts(new ArrayList<>())
-                .enable(true)
                 .updatedAt(ZonedDateTime.now(ZoneId.of("Z"))).build();
 
         User user = userService.saveUser(newUser);
@@ -191,11 +190,11 @@ public class UserApi {
 
         tokenService.saveToken(token);
 
-        // String link = "http://localhost:4200/confirm?token=" + token.getToken();
+         String link = "http://localhost:4200/confirm?token=" + token.getToken();
 
-        // String email = emailService.buildEmail(user.getUsername(), link);
+         String email = emailService.buildEmail(user.getUsername(), link);
 
-        // emailService.send(user.getEmail(), email);
+         emailService.send(user.getEmail(), email);
 
         userService.addRoleToUser(user.getUsername(), "ROLE_USER");
 
@@ -209,22 +208,22 @@ public class UserApi {
     @RequestMapping(value = "/re-confirm", method = RequestMethod.POST)
     public ResponseEntity<Object> reConfirmAccount(@RequestBody String emailAddress) {
 
-        // User user = userService.getUserByEmail(emailAddress);
+         User user = userService.getUserByEmail(emailAddress);
 
-        // Token token = Token.builder()
-        // .token(UUID.randomUUID().toString())
-        // .createdAt(ZonedDateTime.now(ZoneId.of("Z")))
-        // .expiresAt(ZonedDateTime.now(ZoneId.of("Z")).plusMinutes(15))
-        // .user(user)
-        // .build();
+         Token token = Token.builder()
+         .token(UUID.randomUUID().toString())
+         .createdAt(ZonedDateTime.now(ZoneId.of("Z")))
+         .expiresAt(ZonedDateTime.now(ZoneId.of("Z")).plusMinutes(15))
+         .user(user)
+         .build();
 
-        // tokenService.saveToken(token);
+         tokenService.saveToken(token);
 
-        // String link = "http://localhost:4200/confirm?token=" + token.getToken();
+         String link = "http://localhost:4200/confirm?token=" + token.getToken();
 
-        // String email = emailService.buildEmail(user.getUsername(), link);
+         String email = emailService.buildEmail(user.getUsername(), link);
 
-        // emailService.send(user.getEmail(), email);
+         emailService.send(user.getEmail(), email);
 
         return ResponseEntity.status(HttpStatus.OK).body("");
     }

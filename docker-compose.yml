@@ -39,6 +39,10 @@ services:
       MYSQL_DATABASE_NAME: l2store
       MYSQL_USERNAME: root
       MYSQL_PASSWORD: kieutrilang
+      MAIL_USERNAME: ""
+      MAIL_PASSWORD: ""
+      PAYPAL_ID: ""
+      PAYPAL_SECRET: ""
     depends_on:
       - mysql-database
     networks:

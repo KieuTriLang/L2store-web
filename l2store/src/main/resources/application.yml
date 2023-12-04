@@ -20,8 +20,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username:
-    password:
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
     properties:
       mail:
         smtp:
@@ -32,5 +32,5 @@ spring:
 paypal:
   mode: sandbox
   client:
-    id:
-    secret:
+    id: ${PAYPAL_ID}
+    secret: ${PAYPAL_SECRET}
