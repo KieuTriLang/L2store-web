@@ -1,0 +1,56 @@
+<div class="table">
+  <h4>
+    Reviews
+    <div class="search-content">
+      <label for="">Search content contains</label>
+      <input type="text" [formControl]="search" />
+    </div>
+    <div *ngIf="reviews.length > 0">
+      <p *ngIf="!deleteMode; else inMode" (click)="deleteMode = !deleteMode">
+        <span>Delete</span>
+      </p>
+    </div>
+  </h4>
+  <table>
+    <tr>
+      <th>User</th>
+      <th>Star</th>
+      <th>Content</th>
+      <th>Product</th>
+      <th>PostedTime</th>
+      <th *ngIf="deleteMode"></th>
+    </tr>
+    <tr *ngFor="let review of reviews">
+      <td>{{ review.userName }}</td>
+      <td>{{ review.star }}</td>
+      <td>{{ review.content }}</td>
+      <td>
+        <a
+          routerLink="/admin/product/info"
+          [queryParams]="{ id: review.productId }"
+          >{{ review.productName }}</a
+        >
+      </td>
+      <td>{{ review.postedTime | date: "medium" }}</td>
+      <td *ngIf="deleteMode">
+        <input
+          type="checkbox"
+          [checked]="checkSelectDelete(review.id)"
+          (click)="toggleSelectDelete(review.id)"
+        />
+      </td>
+    </tr>
+  </table>
+  <app-pagination
+    *ngIf="totalPage != 0"
+    [page]="page"
+    [totalPage]="totalPage"
+    (pageChange)="handlePageChange($event)"
+  ></app-pagination>
+</div>
+<ng-template #inMode>
+  <p>
+    <span (click)="deleteMode = !deleteMode">Cancel</span>
+    <span (click)="submit()">Apply</span>
+  </p>
+</ng-template>

@@ -1,0 +1,21 @@
+<div class="category-list">
+  <h4>Category</h4>
+  <div class="content">
+    <div class="item" *ngFor="let item of categories">
+      <input
+        type="checkbox"
+        name="category"
+        id=""
+        (change)="handleSelect(item?.id)"
+        [checked]="checkExistCategory(item?.id)"
+      />
+      <label for="">{{ item?.name }}</label>
+    </div>
+  </div>
+  <app-pagination
+    *ngIf="totalPage != 0"
+    [page]="page"
+    [totalPage]="totalPage"
+    (pageChange)="handlePageChange($event)"
+  ></app-pagination>
+</div>

@@ -1,0 +1,22 @@
+<div class="star-list">
+  <ng-container
+    *ngFor="let star of starList; let i = index"
+    [ngTemplateOutlet]="star.isActive ? fillStar : strokeStar"
+    [ngTemplateOutletContext]="{ star: star, index: i }"
+  >
+  </ng-container>
+  <ng-template #fillStar let-star="star" let-index="index">
+    <fa-icon
+      [icon]="star.active"
+      [size]="'1x'"
+      (click)="onClick(index)"
+    ></fa-icon>
+  </ng-template>
+  <ng-template #strokeStar let-star="star" let-index="index">
+    <fa-icon
+      [icon]="star.default"
+      [size]="'1x'"
+      (click)="onClick(index)"
+    ></fa-icon>
+  </ng-template>
+</div>

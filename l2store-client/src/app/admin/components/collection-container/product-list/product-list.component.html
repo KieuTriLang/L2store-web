@@ -1,0 +1,29 @@
+<div class="product-list">
+  <h4>Products</h4>
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search here . . ."
+      [formControl]="searchBar"
+    />
+    <button><fa-icon [icon]="searchIcon" [size]="'1x'"></fa-icon></button>
+  </div>
+  <div class="content">
+    <div
+      class="product-item"
+      *ngFor="let item of products"
+      [class.selected]="checkExistProduct(item.id)"
+      (click)="handleSelect(item.id)"
+    >
+      <img src="{{ item.image }}" alt="" />
+      <h5>{{ item.name }}</h5>
+      <p>{{ item.price | currency }}</p>
+    </div>
+  </div>
+  <app-pagination
+    *ngIf="totalPage != 0"
+    [page]="page"
+    [totalPage]="totalPage"
+    (pageChange)="handlePageChange($event)"
+  ></app-pagination>
+</div>

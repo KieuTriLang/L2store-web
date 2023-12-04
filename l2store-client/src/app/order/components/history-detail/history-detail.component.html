@@ -1,0 +1,74 @@
+<div class="history-detail">
+  <a routerLink="/history">Back</a>
+  <div class="content">
+    <div class="part">
+      <h4>Info</h4>
+      <p>
+        Order code: <span>{{ orderDetail.orderCode }}</span>
+      </p>
+      <p>
+        Buyer: <span>{{ orderDetail.buyer }}</span>
+      </p>
+      <p>
+        Payer: <span>{{ orderDetail.payer }}</span>
+      </p>
+      <p>
+        Created at: <span>{{ orderDetail.createdTime | date: "medium" }}</span>
+      </p>
+      <p>
+        Payed at: <span>{{ orderDetail.paymentTime | date: "medium" }}</span>
+      </p>
+      <p>
+        Payment type: <span>{{ orderDetail.paymentType }}</span>
+      </p>
+      <p>
+        Payment State: <span>{{ orderDetail.payed ? "Payed" : "none" }}</span>
+      </p>
+      <p>
+        Order State: <span>{{ orderDetail.orderState }}</span>
+      </p>
+    </div>
+    <div class="part cart">
+      <h4>Items</h4>
+      <p *ngFor="let product of orderDetail.orderProducts">
+        {{ product.name }}:
+        <span>{{ product.price | number: "1.0-2" | currency }}</span
+        ><span>&times;</span><span>{{ product.quantity }}</span>
+      </p>
+      <p *ngFor="let combo of orderDetail.orderCombos">
+        {{ combo.name }}: <span>{{ combo.price | currency: "USD" }}</span
+        ><span>&times;</span><span>{{ combo.quantity }}</span>
+      </p>
+    </div>
+    <div class="part">
+      <h4>Shipping info</h4>
+      <p>
+        Shipping address: <span>{{ orderDetail.shippingAddress }}</span>
+      </p>
+      <p>
+        Recipient name: <span>{{ orderDetail.recipientName }}</span>
+      </p>
+      <p>
+        City: <span>{{ orderDetail.city }}</span>
+      </p>
+      <p>
+        Country code: <span>{{ orderDetail.countryCode }}</span>
+      </p>
+      <p>
+        Postal code: <span>{{ orderDetail.postalCode }}</span>
+      </p>
+      <p>
+        Phone: <span>{{ orderDetail.phone }}</span>
+      </p>
+    </div>
+    <div class="part">
+      <h4>Summary</h4>
+      <p>
+        Shipping: <span>{{ orderDetail.shipping }}</span>
+      </p>
+      <p>
+        Total: <span>{{ orderDetail.total | currency }}</span>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+@use "/src/styles/variable" as *;
+
+.notification {
+  padding: 15px;
+  position: absolute;
+  top: -15%;
+  right: 2.5%;
+  background: $black-color;
+  color: $white-color;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  &.active {
+    animation: show 4s linear infinite;
+  }
+  & p {
+    font-size: 1.4rem;
+  }
+}
+
+@keyframes show {
+  0% {
+    top: -15%;
+  }
+  15% {
+    top: 5.25%;
+  }
+  20% {
+    top: 5%;
+  }
+  80% {
+    top: 5%;
+  }
+  85% {
+    top: 5.25%;
+  }
+  100% {
+    top: -15%;
+  }
+}

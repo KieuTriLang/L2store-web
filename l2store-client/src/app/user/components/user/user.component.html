@@ -1,0 +1,58 @@
+<div class="user" [class.active]="rla1.isActive || rla2.isActive">
+  <div class="main">
+    <div class="header">
+      <a routerLink="" title="Back to home">
+        <fa-icon [icon]="homeIcon" [size]="'2x'"></fa-icon>
+      </a>
+      <a
+        routerLink="edit"
+        title="Edit info"
+        routerLinkActive
+        #rla1="routerLinkActive"
+      >
+        <fa-icon [icon]="editIcon" [size]="'2x'"></fa-icon>
+      </a>
+      <a
+        routerLink="change-pass"
+        title="Change password"
+        routerLinkActive
+        #rla2="routerLinkActive"
+      >
+        <fa-icon [icon]="keyIcon" [size]="'2x'"></fa-icon>
+      </a>
+    </div>
+    <div class="content">
+      <div class="main-info">
+        <!-- <h2>Username</h2> -->
+        <p>{{ userInfo.email || "" }}</p>
+      </div>
+      <div class="more-info">
+        <div class="info-el">
+          <p>Firstname:</p>
+          <p>{{ userInfo.firstName || "" }}</p>
+        </div>
+        <div class="info-el">
+          <p>Lastname:</p>
+          <p>{{ userInfo.lastName || "" }}</p>
+        </div>
+        <div class="info-el">
+          <p>Gender:</p>
+          <p>{{ userInfo.gender ? "Male" : "Female" }}</p>
+        </div>
+        <div class="info-el">
+          <p>Dob:</p>
+          <p>{{ userInfo.dob | date }}</p>
+        </div>
+        <div class="info-el">
+          <p>Address:</p>
+          <p>{{ userInfo.address || "" }}</p>
+        </div>
+        <!-- <div class="info-el">
+          <p>Purchased product:</p>
+          <p></p>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>

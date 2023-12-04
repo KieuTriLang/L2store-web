@@ -1,0 +1,73 @@
+@use "/src/styles/variable" as *;
+
+.confirm-account {
+  color: $white-color;
+  & .content {
+    display: flex;
+    flex-flow: column;
+    gap: 55px;
+    text-align: center;
+    & p {
+      letter-spacing: 2px;
+    }
+    & a {
+      margin: 0 auto;
+      padding: 10px 20px;
+      width: fit-content;
+      font-size: 1.6rem;
+      color: $white-color;
+      border: 5px;
+      background: rgba($primary-color, 0.9);
+      border-radius: 5px;
+      &:hover {
+        box-shadow: 0 0 20px rgba($primary-color, 1);
+      }
+    }
+    & form {
+      display: flex;
+      flex-flow: column;
+      gap: 20px;
+    }
+    & input {
+      margin: 0 auto;
+      width: 300px;
+      font-size: 1.6rem;
+      color: $white-color;
+      background: rgba($white-color, 0.1);
+      outline: none;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      text-align: center;
+      &:focus {
+        outline: 1px solid $primary-color;
+        box-shadow: 0 0 20px $primary-color;
+      }
+    }
+    & button {
+      margin: 0 auto;
+      width: fit-content;
+      padding: 8px 16px;
+      font-size: 1.4rem;
+      color: rgba($white-color, 1);
+      background: rgba($primary-color, 0.9);
+      cursor: pointer;
+      border-radius: 5px;
+      &:hover {
+        background: rgba($primary-color, 1);
+      }
+      & .loader {
+        animation: spin 1s linear infinite;
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}

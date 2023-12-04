@@ -1,0 +1,85 @@
+<div class="change-pass">
+  <h2>Change password</h2>
+  <form (submit)="submit()" [formGroup]="form">
+    <h6 class="error">{{ err }}</h6>
+    <div class="form-group">
+      <label for="">Current password</label>
+      <input type="password" formControlName="oldPassword" />
+      <div
+        *ngIf="
+          form.get('oldPassword')?.invalid &&
+          form.get('oldPassword')?.errors &&
+          (form.get('oldPassword')?.dirty || form.get('oldPassword')?.touched)
+        "
+      >
+        <small
+          class="error"
+          *ngIf="form.get('oldPassword')?.hasError('required')"
+        >
+          This field is required.
+        </small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">New password</label>
+      <input type="password" formControlName="newPassword" />
+      <div
+        *ngIf="
+          form.get('newPassword')?.invalid &&
+          form.get('newPassword')?.errors &&
+          (form.get('newPassword')?.dirty || form.get('newPassword')?.touched)
+        "
+      >
+        <small
+          class="error"
+          *ngIf="form.get('newPassword')?.hasError('required')"
+        >
+          This field is required.
+        </small>
+        <small
+          class="error"
+          *ngIf="form.get('newPassword')?.hasError('minlength')"
+        >
+          The minimum length for this field is 6 characters.
+        </small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">Confirm new password</label>
+      <input type="password" formControlName="confirmPassword" />
+      <div
+        *ngIf="
+          !matchPassword() ||
+          (form.get('confirmPassword')?.invalid &&
+            form.get('confirmPassword')?.errors &&
+            (form.get('confirmPassword')?.dirty ||
+              form.get('confirmPassword')?.touched))
+        "
+      >
+        <small
+          class="error"
+          *ngIf="form.get('confirmPassword')?.hasError('required')"
+        >
+          This field is required.
+        </small>
+        <small
+          class="error"
+          *ngIf="form.get('confirmPassword')?.hasError('minlength')"
+        >
+          The minimum length for this field is 6 characters.
+          <br />
+        </small>
+        <small class="error" *ngIf="!matchPassword()"
+          >Confirm password not match!</small
+        >
+      </div>
+    </div>
+    <div class="actions">
+      <button type="button">Cancel</button>
+      <button type="submit" *ngIf="!isSuccess; else success">Change</button>
+    </div>
+  </form>
+</div>
+
+<ng-template #text> Change </ng-template>
+<ng-template #success> <p>Change success!</p> </ng-template>

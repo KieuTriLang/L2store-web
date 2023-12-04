@@ -1,0 +1,132 @@
+<div class="sign-up">
+  <app-section-title [title]="'Sign up'" [center]="true"></app-section-title>
+  <form
+    class="form"
+    [formGroup]="form"
+    (submit)="submit()"
+    *ngIf="!signUpSuccessState; else signUpSuccess"
+  >
+    <p *ngIf="error != ''" class="error">{{ error }}</p>
+    <div class="form-group">
+      <label for="">Username</label>
+      <input
+        type="text"
+        name="username"
+        id="username"
+        formControlName="username"
+        [class.error]="error.includes('Username')"
+      />
+      <div
+        *ngIf="
+          form.get('username')?.invalid &&
+          form.get('username')?.errors &&
+          (form.get('username')?.dirty || form.get('username')?.touched)
+        "
+      >
+        <small class="error" *ngIf="form.get('username')?.hasError('required')">
+          This field is required.
+        </small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">Email</label>
+      <input
+        type="text"
+        name="email"
+        id="email"
+        formControlName="email"
+        [class.error]="error.includes('Email')"
+      />
+      <div
+        *ngIf="
+          form.get('email')?.invalid &&
+          form.get('email')?.errors &&
+          (form.get('email')?.dirty || form.get('email')?.touched)
+        "
+      >
+        <small class="error" *ngIf="form.get('email')?.hasError('required')">
+          This field is required.
+        </small>
+        <small class="error" *ngIf="form.get('email')?.hasError('email')">
+          Email invalid
+        </small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        formControlName="password"
+      />
+      <div
+        *ngIf="
+          form.get('password')?.invalid &&
+          form.get('password')?.errors &&
+          (form.get('password')?.dirty || form.get('password')?.touched)
+        "
+      >
+        <small class="error" *ngIf="form.get('password')?.hasError('required')">
+          This field is required.
+        </small>
+        <small
+          class="error"
+          *ngIf="form.get('password')?.hasError('minlength')"
+        >
+          The minimum length for this field is 6 characters.
+        </small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">Confirm password</label>
+      <input
+        type="password"
+        name="confirmPass"
+        id="confirmPass"
+        formControlName="confirmPassword"
+      />
+      <div
+        *ngIf="
+          !matchPassword() ||
+          (form.get('confirmPassword')?.invalid &&
+            form.get('confirmPassword')?.errors &&
+            (form.get('confirmPassword')?.dirty ||
+              form.get('confirmPassword')?.touched))
+        "
+      >
+        <small
+          class="error"
+          *ngIf="form.get('confirmPassword')?.hasError('required')"
+        >
+          This field is required.
+        </small>
+        <small
+          class="error"
+          *ngIf="form.get('confirmPassword')?.hasError('minlength')"
+        >
+          The minimum length for this field is 6 characters.
+          <br />
+        </small>
+        <small class="error" *ngIf="!matchPassword()"
+          >Confirm password not match!</small
+        >
+      </div>
+    </div>
+    <button type="submit" [disabled]="form.invalid">
+      <div class="loader" *ngIf="loading; else text">
+        <fa-icon [icon]="loadIcon" [size]="'2x'"></fa-icon>
+      </div>
+    </button>
+    <p>Have a account? <a routerLink="/sign-in">Sign in now</a></p>
+  </form>
+</div>
+
+<ng-template #signUpSuccess>
+  <div class="sign-up-success">
+    <p>Successfully!</p>
+    <p>Verification link is sent to {{ form.controls["email"].value }}</p>
+  </div>
+</ng-template>
+
+<ng-template #text> Register </ng-template>

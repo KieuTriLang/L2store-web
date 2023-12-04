@@ -1,0 +1,100 @@
+@use "/src/styles/variable" as *;
+.collection-overview {
+  padding: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 20px;
+  background: rgba($white-color, 0.05);
+  border-radius: 5px;
+  & .info {
+    flex: 1 1 auto;
+    color: $white-color;
+    border-right: 1px solid rgba($white-color, 0.05);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    & h5 {
+      font-size: 2.4rem;
+    }
+    & .price {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      gap: 10px;
+      &-origin {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: baseline;
+        gap: 15px;
+        & p {
+          font-size: 1.2rem;
+          text-decoration-line: line-through;
+          color: rgba($white-color, 0.5);
+        }
+        & span {
+          padding: 2.5px 7.5px;
+          font-size: 1.2rem;
+          background: rgba($danger-color, 1);
+          clip-path: polygon(
+            25% 0%,
+            100% 0,
+            85% 50%,
+            100% 100%,
+            25% 100%,
+            0% 50%
+          );
+        }
+      }
+      &-final {
+        font-size: 1.8rem;
+      }
+    }
+  }
+  & .image-list {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 15px;
+    & img {
+      padding: 10px;
+      width: 150px;
+      background: rgba($white-color, 0.025);
+      border-radius: 5px;
+      box-shadow: 0 0 10px $black-color;
+    }
+    & .cover {
+      position: absolute;
+      inset: 0 0 0 0;
+      background: rgba($black-color, 1);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: scale 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        inset 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.25s;
+      &.active {
+        scale: 1.05;
+        inset: 100% 0 0 0;
+      }
+      & .ribbon {
+        position: absolute;
+        top: 25%;
+        right: -65%;
+        width: 500px;
+        height: 40px;
+        border-top: 10px solid $white-color;
+        border-bottom: 10px solid $white-color;
+        rotate: 45deg;
+      }
+      & img {
+        width: 75px;
+        aspect-ratio: 1;
+        background: transparent;
+      }
+    }
+  }
+}

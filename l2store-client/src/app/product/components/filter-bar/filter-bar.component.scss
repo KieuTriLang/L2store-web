@@ -1,0 +1,151 @@
+@use "/src/styles/variable" as *;
+.filter-bar {
+  font-size: 1.6rem;
+  & > .title {
+    width: fit-content;
+    padding: 10px;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+    background: rgba($white-color, 0.075);
+    & .expanded-icon {
+      transition: rotate cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+    }
+  }
+  & .content {
+    width: 100%;
+    height: 0;
+    background: rgba($white-color, 0.075);
+    transition: height 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    overflow: hidden;
+    border-radius: 0 5px 5px 5px;
+  }
+  &.active {
+    & > .title {
+      border-radius: 5px 5px 0 0;
+      & .expanded-icon {
+        rotate: 90deg;
+      }
+    }
+    & .content {
+      height: 300px;
+    }
+  }
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.5fr;
+  height: 100%;
+  padding: 0 20px 40px 0;
+  gap: 40px;
+  &-group {
+    flex: 1 1 auto;
+    margin: 15px;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px;
+
+    & .title {
+      padding: 0 0 5px 0;
+      font-size: 1.6rem;
+      background: transparent;
+      border-bottom: 1px solid rgba($white-color, 0.075);
+    }
+    & .range {
+      & .form-control {
+        margin: 10px 0 0 0;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 1.6rem;
+        & input[type="text"] {
+          background: rgba($white-color, 1);
+          width: 100%;
+          outline: none;
+          border: none;
+          padding: 5px 10px;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+  & .options {
+    padding: 0 0 0 10px;
+    height: 225px;
+    overflow: auto;
+    // display: grid;
+    // grid-template-columns: repeat(2, 1fr);
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: rgba($white-color, 0.075);
+      border-radius: 5px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: rgba($white-color, 0.125);
+      border-radius: 5px;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgba($white-color, 0.25);
+    }
+    & .form-control {
+      margin: 10px 0 0 0;
+      display: flex;
+      flex-flow: row-reverse nowrap;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.6rem;
+      & label {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      & input[type="checkbox"],
+      & input[type="radio"] {
+        accent-color: rgba($primary-color, 1);
+      }
+    }
+  }
+  & .actions {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    & button {
+      cursor: pointer;
+      margin: auto 0 0 auto;
+      width: fit-content;
+      height: fit-content;
+      padding: 8px 16px;
+      font-size: 1.4rem;
+      background: transparent;
+      border: 1px solid $primary-color;
+      color: rgba($white-color, 1);
+      border-radius: 5px;
+      transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+      &[type="button"] {
+        border: none;
+      }
+      &:not([type="button"]):hover {
+        background: $primary-color;
+      }
+      &:not([type="submit"]):hover {
+        color: $primary-color;
+      }
+    }
+  }
+}

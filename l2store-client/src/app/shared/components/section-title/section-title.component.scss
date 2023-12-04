@@ -1,0 +1,26 @@
+@use "/src/styles/variable" as *;
+.section-title {
+  padding: 25px;
+  & .title {
+    margin: 0 0 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: lighter;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    // -webkit-text-stroke: 0.5px $white-color;
+    // -webkit-text-fill-color: transparent;
+    &.center {
+      justify-content: center;
+    }
+    & a {
+      color: $white-color;
+      font-size: 1.2rem;
+      transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.3s;
+      &:hover {
+        letter-spacing: 2px;
+      }
+    }
+  }
+}

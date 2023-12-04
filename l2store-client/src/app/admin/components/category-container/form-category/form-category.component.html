@@ -1,0 +1,73 @@
+<div class="form-category">
+  <h4>{{ type | titlecase }}</h4>
+  <form *ngIf="type == 'add'" [formGroup]="form" (submit)="add()">
+    <div class="form-group">
+      <input type="hidden" name="id" formControlName="id" />
+      <label for="">Name</label>
+      <input type="text" name="name" id="name" formControlName="name" />
+    </div>
+
+    <div class="actions">
+      <button type="button">
+        <a [routerLink]="['/admin/category']">Close</a>
+      </button>
+      <button type="submit">Add</button>
+    </div>
+  </form>
+
+  <form *ngIf="type == 'info'" [formGroup]="form">
+    <div class="form-group">
+      <input type="hidden" name="id" formControlName="id" />
+      <label for="">Name</label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        formControlName="name"
+        [attr.disabled]="true"
+      />
+    </div>
+
+    <div class="actions">
+      <button type="button">
+        <a [routerLink]="['/admin/category']">Close</a>
+      </button>
+    </div>
+  </form>
+
+  <form *ngIf="type == 'edit'" (submit)="save()" [formGroup]="form">
+    <div class="form-group">
+      <input type="hidden" name="id" formControlName="id" />
+      <label for="">Name</label>
+      <input type="text" name="name" id="name" formControlName="name" />
+    </div>
+
+    <div class="actions">
+      <button type="button">
+        <a [routerLink]="['/admin/category']">Cancel</a>
+      </button>
+      <button type="submit">Update</button>
+    </div>
+  </form>
+
+  <form *ngIf="type == 'delete'" (submit)="delete()" [formGroup]="form">
+    <div class="form-group">
+      <input type="hidden" name="id" formControlName="id" />
+      <label for="">Name</label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        formControlName="name"
+        [attr.disabled]="true"
+      />
+    </div>
+
+    <div class="actions">
+      <button type="button">
+        <a [routerLink]="['/admin/category']">Cancel</a>
+      </button>
+      <button type="submit">Delete</button>
+    </div>
+  </form>
+</div>

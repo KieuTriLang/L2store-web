@@ -1,0 +1,111 @@
+<div class="product-detail" [class.active]="isActive">
+  <div class="image">
+    <img [src]="product.image" alt="bongtai" />
+  </div>
+  <div class="info">
+    <div class="title">
+      <h2>
+        {{ product.name }}
+        <fa-icon
+          [icon]="eyeIcon"
+          [size]="'1x'"
+          (click)="changeActive()"
+        ></fa-icon>
+      </h2>
+      <div class="rating">
+        <p class="star">
+          {{ product.averageRate }}
+          <fa-icon [icon]="starIcon" [size]="'1x'"></fa-icon>
+        </p>
+        <p class="evaluate" (click)="toggleReview()">
+          {{ product.amountOfEvaluate }} reviews
+        </p>
+      </div>
+    </div>
+    <p class="detail">
+      <span class="overview">{{ product.overview }}</span>
+      <!-- <span class="properties">{{ product.detail }}</span> -->
+    </p>
+    <div class="price">
+      <div class="price-origin" *ngIf="product.salesoff > 0">
+        <p>{{ product.price | currency }}</p>
+        <span>-{{ product.salesoff }}%</span>
+      </div>
+      <p class="price-final">
+        {{ product.price | applyDiscount: product.salesoff | currency }}
+      </p>
+    </div>
+  </div>
+  <div class="action">
+    <div class="quantity">
+      <button type="button" (click)="handleQuantity(-1)">&minus;</button>
+      <input
+        type="number"
+        name="quantity"
+        [value]="cartItem.quantity"
+        (input)="handleInputQuantity($event)"
+      />
+      <button type="button" (click)="handleQuantity(1)">&plus;</button>
+    </div>
+    <p class="total">
+      Total:
+      <span>{{
+        product.price * cartItem.quantity
+          | applyDiscount: product.salesoff
+          | currency
+      }}</span>
+    </p>
+    <button type="button" (click)="addToCart()">
+      <fa-icon [icon]="cartIcon" [size]="'2x'"></fa-icon>
+    </button>
+  </div>
+  <div class="review" [class.active]="isShowReview">
+    <form
+      class="add-review"
+      [class.active]="isOpenedFormAddReview"
+      *ngIf="isAuthorization && authService.hasRole('ROLE_USER')"
+    >
+      <div class="back" (click)="toggleFormAddReview()">
+        &times; <span>Write review</span>
+      </div>
+      <div class="main">
+        <!-- <img src="assets/images/bongtai.png" alt="" /> -->
+        <form class="content" (submit)="submit()" [formGroup]="formReview">
+          <p>{{ authService.getUsername() }}</p>
+          <app-star-list
+            [numberOfStarActive]="formReview.controls['star'].value"
+            (onStarActived)="handleStarActive($event)"
+          ></app-star-list>
+          <textarea
+            name=""
+            id=""
+            placeholder="Write new review . . ."
+            formControlName="content"
+          ></textarea>
+          <button type="submit">Add</button>
+        </form>
+      </div>
+    </form>
+    <div class="title">
+      <h3 (click)="toggleReview()">Reviews</h3>
+      <button
+        type="button"
+        *ngIf="
+          (authService.authenticatedState$ | async) &&
+          isAuthorization &&
+          authService.hasRole('ROLE_USER')
+        "
+        (click)="toggleFormAddReview()"
+      >
+        Add review
+      </button>
+    </div>
+    <div class="evaluate-list" (scroll)="handleScroll($event)">
+      <app-evaluate
+        *ngFor="let review of reviews"
+        [review]="review"
+      ></app-evaluate>
+      <app-loading *ngIf="reviewLoad"></app-loading>
+    </div>
+  </div>
+</div>

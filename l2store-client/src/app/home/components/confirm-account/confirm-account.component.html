@@ -1,0 +1,28 @@
+<div class="confirm-account">
+  <app-section-title [title]="title" [center]="true">
+    <div class="content" *ngIf="isConfirmed; else failed">
+      <p>{{ message }}</p>
+      <a routerLink="/sign-in">Sign in now</a>
+    </div>
+  </app-section-title>
+</div>
+
+<ng-template #failed>
+  <div class="content" *ngIf="!sent">
+    <p>{{ message }}</p>
+    <form [formGroup]="form" (submit)="submit()">
+      <input
+        type="text"
+        placeholder="Email address . . ."
+        formControlName="email"
+      />
+      <button type="submit">
+        <div class="loader" *ngIf="loading; else text">
+          <fa-icon [icon]="loadingIcon" [size]="'2x'"></fa-icon>
+        </div>
+      </button>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #text> Reconfirm account </ng-template>

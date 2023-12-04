@@ -1,0 +1,45 @@
+<div class="history" (scroll)="handleScroll($event)">
+  <h1>HISTORY ORDER</h1>
+  <div class="order-list">
+    <a
+      [routerLink]="['/history', order.id]"
+      class="order-item"
+      *ngFor="let order of orders"
+    >
+      <p>
+        Order code: <span>{{ order.orderCode }}</span>
+      </p>
+      <p>
+        Buyer: <span>{{ order.buyer }}</span>
+      </p>
+      <p>
+        Payer: <span>{{ order.payer }}</span>
+      </p>
+      <p>
+        Products: <span>{{ order.amountOfProduct }}</span>
+      </p>
+      <p>
+        Combos: <span>{{ order.amountOfCombo }}</span>
+      </p>
+      <p>
+        Total: <span>{{ order.total | currency }}</span>
+      </p>
+      <p>
+        Payment type: <span>{{ order.paymentType }}</span>
+      </p>
+      <p>
+        Created time: <span>{{ order.createdTime | date: "medium" }}</span>
+      </p>
+      <p>
+        Payment time: <span>{{ order.paymentTime | date: "medium" }}</span>
+      </p>
+      <p>
+        Payment State: <span>{{ order.payed ? "Payed" : "" }}</span>
+      </p>
+      <p>
+        Order State: <span>{{ order.orderState }}</span>
+      </p>
+    </a>
+  </div>
+  <app-loading *ngIf="loading"></app-loading>
+</div>

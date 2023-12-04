@@ -1,0 +1,62 @@
+@use "/src/styles/variable" as *;
+
+.user {
+  background: rgba($black-color, 1);
+  color: $white-color;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 0px 0px;
+  &.active {
+    grid-template-columns: 1fr 0px 400px;
+  }
+  & .main {
+    padding: 40px;
+    & .header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      & a {
+        color: $white-color;
+        &:first-of-type {
+          margin: 0 auto 0 0;
+        }
+      }
+    }
+    & .content {
+      margin: 25px 0 0 0;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      gap: 40px;
+      & .main-info {
+        text-align: center;
+        display: flex;
+        flex-flow: column;
+        gap: 15px;
+        & p {
+          letter-spacing: 2px;
+          font-style: italic;
+        }
+      }
+      & .more-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        & .info-el {
+          padding: 10px 0 8px 0;
+          display: flex;
+          gap: 5px;
+          border-bottom: 2px solid rgba($white-color, 0.25);
+          & p:first-of-type {
+            font-weight: 700;
+          }
+          & p:last-of-type {
+            font-style: italic;
+          }
+        }
+      }
+    }
+  }
+}

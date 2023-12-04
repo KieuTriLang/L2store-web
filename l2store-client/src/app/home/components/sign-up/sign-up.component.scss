@@ -1,0 +1,86 @@
+@use "/src/styles/variable" as *;
+.sign-up {
+  color: $white-color;
+  & .form {
+    margin: 0 auto;
+    width: 250px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 20px;
+    & .error {
+      color: $danger-color;
+    }
+    &-group {
+      font-size: 1.8rem;
+      display: flex;
+      flex-flow: column nowrap;
+      gap: 10px;
+      & label {
+        flex: 1 1 auto;
+      }
+      & input[type="text"],
+      & input[type="password"] {
+        padding: 5px 10px;
+        flex: 1 1 auto;
+        height: 28px;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.4rem;
+        background: rgba($white-color, 0.1);
+        color: $white-color;
+        &.error {
+          outline: 1px solid $danger-color;
+        }
+      }
+    }
+    & button {
+      margin: 0 auto;
+      padding: 8px 16px;
+      width: fit-content;
+      font-size: 1.4rem;
+      border-radius: 5px;
+      background: transparent;
+      border: 1px solid $secondary-color;
+      color: $white-color;
+      cursor: pointer;
+      &:hover {
+        background: rgba($secondary-color, 1);
+      }
+      & .loader {
+        animation: spin 1s linear infinite;
+      }
+    }
+    & > p {
+      margin: 20px auto;
+      width: fit-content;
+      font-size: 1rem;
+      & a {
+        color: $white-color;
+        font-size: 1rem;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.sign-up-success {
+  display: flex;
+  flex-flow: column;
+  gap: 30px;
+  & p {
+    text-align: center;
+    font-style: italic;
+  }
+}
+
+@keyframes spin {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}

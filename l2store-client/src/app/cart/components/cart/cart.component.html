@@ -1,0 +1,58 @@
+<form class="cart" [formGroup]="form" (submit)="submit()">
+  <div class="cart-item">
+    <h3>Items</h3>
+    <div class="cart-item-list">
+      <app-cart-item
+        *ngFor="let item of cart.products; let i = index"
+        [index]="i"
+        [type]="'product'"
+        [item]="item"
+      ></app-cart-item>
+      <app-cart-item
+        *ngFor="let item of cart.combos; let i = index"
+        [index]="cart.products.length + i"
+        [type]="'collection'"
+        [item]="item"
+      ></app-cart-item>
+    </div>
+  </div>
+  <div class="cart-summary">
+    <h3>Summary</h3>
+    <div class="info">
+      <p>
+        Items: <span>{{ cart.combos.length + cart.products.length }}</span>
+      </p>
+      <p>
+        Total: <span>{{ calculateTotal() | currency }}</span>
+      </p>
+    </div>
+  </div>
+  <div class="cart-payment">
+    <h3>Payment</h3>
+    <div class="payment-list">
+      <div class="form-group">
+        <input type="radio" name="payment" id="" checked disabled />
+        <label for=""
+          ><fa-icon [icon]="paypalIcon" [size]="'2x'"></fa-icon
+        ></label>
+      </div>
+      <!-- <div class="form-group">
+        <input type="radio" name="payment" id="" />
+        <label for=""
+          ><fa-icon [icon]="cashIcon" [size]="'2x'"></fa-icon
+        ></label>
+      </div> -->
+    </div>
+  </div>
+  <div class="cart-action">
+    <button type="button" (click)="clear()">Clear</button>
+    <button type="submit" [disabled]="loading || redirecting">
+      <div class="loader" *ngIf="loading; else text">
+        <fa-icon [icon]="loadIcon" [size]="'2x'"></fa-icon>
+      </div>
+      <p *ngIf="redirecting">Redirecting . . .</p>
+    </button>
+  </div>
+</form>
+
+<ng-template #text>Checkout</ng-template>

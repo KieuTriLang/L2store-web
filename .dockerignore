@@ -1,0 +1,8 @@
+#Angular
+**/node_modules
+
+#Java spring boot
+*.class
+*.jar
+*.war
+*.ear

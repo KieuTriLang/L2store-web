@@ -1,0 +1,16 @@
+@use "/src/styles/variable" as *;
+.statistic {
+  height: 100px;
+  padding: 15px;
+  border: 2px solid $black-color;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  & .content {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,14 @@
+<div class="search-bar">
+  <div class="form">
+    <input
+      type="text"
+      placeholder="Search . . ."
+      name="searchText"
+      autocomplete="off"
+      [formControl]="text"
+    />
+    <button type="button" (click)="submit()">
+      <fa-icon [icon]="searchIcon" [size]="'2x'"></fa-icon>
+    </button>
+  </div>
+</div>

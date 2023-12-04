@@ -1,0 +1,122 @@
+@use "/src/styles/variable" as *;
+
+.form-collection {
+  padding: 20px;
+  display: flex;
+  flex-flow: column;
+  gap: 20px;
+  & form {
+    border: 2px solid $black-color;
+    & h4 {
+      padding: 5px;
+      background: $black-color;
+      color: $white-color;
+      text-align: center;
+    }
+    & .content {
+      padding: 15px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      &.disabled {
+        display: flex;
+        flex-flow: column;
+      }
+      & .detail {
+        display: flex;
+        flex-flow: column wrap;
+        gap: 20px;
+        & .form-group {
+          flex: 1 1 auto;
+          display: flex;
+          flex-flow: column;
+          gap: 10px;
+          & label {
+            font-size: 1.4rem;
+          }
+          & input {
+            padding: 5px;
+            font-size: 1.4rem;
+          }
+          & textarea {
+            padding: 5px;
+            height: 48px;
+            font-size: 1.4rem;
+          }
+        }
+        & .product {
+          & label {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            & span {
+              font-size: 1.4rem;
+              font-weight: 700;
+            }
+            & .line {
+              flex: 1 1 auto;
+              padding: 1px;
+              background: $black-color;
+            }
+          }
+          &-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+          }
+          &-item {
+            padding: 10px;
+            border: 2px solid $black-color;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            gap: 15px;
+            &.selected {
+              background: $black-color;
+              color: $white-color;
+            }
+            & img {
+              width: 100%;
+              aspect-ratio: 1;
+            }
+            & h5 {
+              font-size: 1rem;
+            }
+            & .price {
+              margin: auto 0 0 0;
+            }
+            & p:last-child {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      & .actions {
+        grid-column: 1 / span 3;
+        margin: 0 auto;
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        justify-content: center;
+        & button {
+          padding: 5px 10px;
+          font-size: 1.4rem;
+          background: transparent;
+          color: $black-color;
+          cursor: pointer;
+          &[type="button"] {
+            border: none;
+          }
+          &[type="submit"] {
+            border: 2px solid $black-color;
+            &:hover {
+              background: $black-color;
+              color: $white-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}

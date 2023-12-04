@@ -1,0 +1,41 @@
+@use "/src/styles/variable" as *;
+.sort-select {
+  width: fit-content;
+  display: flex;
+  background: rgba($white-color, 0.05);
+  align-items: center;
+  border-radius: 5px;
+  & .selected {
+    padding: 10px 20px;
+    width: fit-content;
+    height: 100%;
+    font-size: 1.6rem;
+    background: rgba($white-color, 0.05);
+    border-radius: 5px 0 0 5px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    & fa-icon.active {
+      rotate: 180deg;
+    }
+  }
+
+  & .select-list {
+    display: none;
+    align-items: center;
+    overflow: hidden;
+    &.active {
+      display: flex;
+    }
+    & .select-item {
+      padding: 10px;
+      font-size: 1.4rem;
+      background: rgba($white-color, 0.025);
+      cursor: pointer;
+      &:hover {
+        background: rgba($white-color, 0.05);
+      }
+    }
+  }
+}

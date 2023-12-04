@@ -1,0 +1,29 @@
+@use "/src/styles/variable" as *;
+
+.order {
+  padding: 20px;
+  & .content {
+    padding: 20px;
+    margin: 0 auto;
+    width: 50%;
+    border: 2px solid $black-color;
+    & .part {
+      padding: 15px;
+      border-bottom: 2px solid rgba($black-color, 0.25);
+      display: flex;
+      flex-flow: column;
+      gap: 7.5px;
+      & p {
+        font-size: 1.4rem;
+        display: flex;
+        gap: 10px;
+        & span {
+          &:first-of-type {
+            margin: 0 0 0 auto;
+          }
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}

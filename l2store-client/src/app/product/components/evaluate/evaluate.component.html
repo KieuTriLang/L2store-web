@@ -1,0 +1,16 @@
+<div class="evaluate">
+  <!-- <img src="assets/images/bongtai.png" alt="" /> -->
+  <div class="content">
+    <p class="user-name">{{ review.userName }}</p>
+    <div class="sub-content">
+      <app-star-list
+        [isAction]="false"
+        [numberOfStarActive]="review.star"
+      ></app-star-list>
+      <small>{{ review.postedTime | date: "medium" }}</small>
+    </div>
+    <p class="comment">
+      {{ review.content }}
+    </p>
+  </div>
+</div>

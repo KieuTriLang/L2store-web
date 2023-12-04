@@ -1,0 +1,13 @@
+
+FROM gradle:latest AS builder
+WORKDIR /app
+COPY ./l2store /app/l2store-backend
+RUN gradle build -p /app/l2store-backend
+
+
+FROM openjdk:17-slim
+WORKDIR /app
+COPY --from=builder /app/l2store-backend/build/libs/*.jar app.jar
+
+EXPOSE 8080
+CMD ["java","-jar","app.jar"]

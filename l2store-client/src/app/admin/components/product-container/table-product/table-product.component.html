@@ -1,0 +1,49 @@
+<div class="table">
+  <h4>
+    All Product
+    <app-sort-by
+      [sortList]="sortList"
+      (sortItemSelected)="handleSort($event)"
+    ></app-sort-by>
+    <a routerLink="/admin/product/add">Add product</a>
+  </h4>
+  <table>
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Sales</th>
+      <th>Rate</th>
+      <th>Evaluates</th>
+      <th>Sold</th>
+      <th>Categories</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let product of products">
+      <td><img [src]="product.image" alt="" /></td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price | currency }}</td>
+      <td>{{ product.salesoff }}%</td>
+      <td>{{ product.averageRate }}</td>
+      <td>{{ product.amountOfEvaluate }}</td>
+      <td>{{ product.sold }}</td>
+      <td class="categories">
+        <span *ngFor="let category of product.categories"
+          >{{ category.name }},</span
+        >
+      </td>
+      <td class="actions">
+        <app-table-actions
+          [url]="'/admin/product'"
+          [id]="product.id"
+        ></app-table-actions>
+      </td>
+    </tr>
+  </table>
+  <app-pagination
+    *ngIf="totalPage != 0"
+    [page]="page"
+    [totalPage]="totalPage"
+    (pageChange)="handlePageChange($event)"
+  ></app-pagination>
+</div>

@@ -1,0 +1,35 @@
+<div class="table">
+  <h4>
+    All collection
+    <a routerLink="/admin/collection/add">Add collection</a>
+  </h4>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Items</th>
+      <th>Price</th>
+      <th>Sales off</th>
+      <th>Sold</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let collection of collections">
+      <td>{{ collection.name }}</td>
+      <td>{{ collection.productImages.length }}</td>
+      <td>{{ collection.totalPrice | currency }}</td>
+      <td>{{ collection.salesoff }}%</td>
+      <td>{{ collection.totalPurchases }}</td>
+      <td class="actions">
+        <app-table-actions
+          [url]="'/admin/collection'"
+          [id]="collection.id"
+        ></app-table-actions>
+      </td>
+    </tr>
+  </table>
+  <app-pagination
+    *ngIf="totalPage != 0"
+    [page]="page"
+    [totalPage]="totalPage"
+    (pageChange)="handlePageChange($event)"
+  ></app-pagination>
+</div>

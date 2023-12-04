@@ -1,0 +1,128 @@
+@use "/src/styles/variable" as *;
+.product-overview {
+  position: relative;
+  padding: 10px 20px 15px 20px;
+  width: 100%;
+  aspect-ratio: 5/9;
+  background: rgba($white-color, 0.05);
+  border-radius: 5px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 10px;
+  transition: background cubic-bezier(0.075, 0.82, 0.165, 1) 0.3s;
+  color: $white-color;
+  &:hover {
+    background: rgba($white-color, 0.075);
+  }
+  & a {
+    flex: 1 1 auto;
+    width: 100%;
+    color: $white-color;
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+    // margin: 0 0 auto 0;
+    & > img {
+      // margin: 0 0 10px 0;
+      width: 100%;
+      border-bottom: solid 1px rgba($white-color, 0.1);
+    }
+    & > h5 {
+      // margin: 0 0 10px 0;
+    }
+  }
+  & .categories {
+    margin: 0 0 15px 0;
+    display: flex;
+    gap: 7.5px;
+    align-items: center;
+    flex-flow: row wrap;
+    & span {
+      font-size: 0.75rem;
+      padding: 5px 7.5px;
+      border-radius: 5px;
+      background: $black-color;
+    }
+  }
+  & .rating {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  & .bookmark {
+    position: absolute;
+    top: -2.5px;
+    right: 5%;
+    width: 7.5%;
+    aspect-ratio: 3/5;
+    background: rgba($white-color, 0.25);
+    clip-path: polygon(100% 0, 100% 100%, 50% 75%, 0 100%, 0 0);
+    transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.3s;
+    border-radius: 2px 2px 0 0;
+    cursor: pointer;
+    &:hover {
+      top: -5px;
+      background: rgba($danger-color, 1);
+    }
+  }
+  & .bottom {
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    & .price {
+      flex: 1 1 auto;
+      &-origin {
+        margin: 0 0 5px 0;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: baseline;
+        gap: 10px;
+        & p {
+          color: rgba($white-color, 0.5);
+          font-size: 1rem;
+          text-decoration-line: line-through;
+        }
+        & span {
+          padding: 2.5px 7.5px;
+          font-size: 0.85rem;
+          background: rgba($danger-color, 1);
+          clip-path: polygon(
+            25% 0%,
+            100% 0,
+            85% 50%,
+            100% 100%,
+            25% 100%,
+            0% 50%
+          );
+        }
+      }
+      &-final {
+        margin: auto 0 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        & span {
+          font-size: 0.75rem;
+        }
+      }
+    }
+    & button {
+      padding: 10px 20px;
+      position: relative;
+      flex: 1 1 auto;
+      height: 100%;
+      background: transparent;
+      border: 1px solid rgba($primary-color, 0.5);
+      border-radius: 5px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: $primary-color;
+      &:hover {
+        color: $white-color;
+        background: rgba($primary-color, 1);
+      }
+    }
+  }
+}

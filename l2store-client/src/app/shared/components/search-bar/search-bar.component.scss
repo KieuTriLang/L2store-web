@@ -1,0 +1,32 @@
+@use "/src/styles/variable" as *;
+.search-bar {
+  & .form {
+    padding: 5px 0;
+    width: 400px;
+    height: 36px;
+    display: flex;
+    flex-flow: row nowrap;
+    border-radius: 50px;
+    background: rgba($white-color, 0.075);
+    & input[type="text"] {
+      flex: 2 1 auto;
+      outline: none;
+      color: $white-color;
+      background: transparent;
+      border-radius: 50px 0 0 50px;
+      font-size: 1.6rem;
+      padding: 1rem 1.5rem;
+      border: none;
+      border-right: 1px solid rgba($white-color, 0.2);
+    }
+    & button {
+      flex: 1 1 auto;
+      border-radius: 0 50px 50px 0;
+      border: none;
+      background: transparent;
+      font-size: 1.2rem;
+      color: $white-color;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+@use "/src//styles/variable" as *;
+
+table,
+th,
+td {
+  border: 2px solid $black-color;
+  border-collapse: collapse;
+  font-size: 1.6rem;
+}
+th {
+  background: $black-color;
+  color: $white-color;
+}
+th,
+td {
+  padding: 5px 10px;
+}
+td {
+  & input[type="checkbox"] {
+    accent-color: $black-color;
+  }
+  &.roles {
+    & a {
+      margin: 0 0 0 15px;
+    }
+  }
+}
+.table {
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+  & h4 {
+    display: flex;
+    justify-content: space-between;
+    & a:hover {
+      text-decoration: underline;
+    }
+  }
+}

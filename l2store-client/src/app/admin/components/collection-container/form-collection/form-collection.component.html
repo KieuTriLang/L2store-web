@@ -1,0 +1,95 @@
+<div class="form-collection">
+  <a [routerLink]="['/admin/collection']">Back</a>
+  <form [formGroup]="form" (submit)="submit()">
+    <h4 class="title">{{ type | titlecase }} collection</h4>
+    <div class="content" [class.disabled]="type == 'info' || type == 'delete'">
+      <div class="detail">
+        <div class="form-group">
+          <label for="">Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            formControlName="name"
+            [attr.disabled]="type == 'info' || type == 'delete' ? true : null"
+          />
+        </div>
+        <div class="form-group">
+          <label for="">Description</label>
+          <textarea
+            name="overview"
+            id="overview"
+            formControlName="description"
+            [attr.disabled]="type == 'info' || type == 'delete' ? true : null"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="">Sales off</label>
+          <input
+            type="number"
+            name="salesoff"
+            id="salesoff"
+            formControlName="salesoff"
+            [attr.disabled]="type == 'info' || type == 'delete' ? true : null"
+          />
+        </div>
+        <div class="form-group">
+          <label for="">Total</label>
+          <p>{{ form.controls["total"].value || 0 | currency }}</p>
+        </div>
+
+        <div class="form-group product">
+          <label for=""><span>Product</span><span class="line"></span></label>
+          <div class="product-list">
+            <div
+              class="product-item selected"
+              *ngFor="let item of selectedProducts"
+            >
+              <img src="{{ item.image }}" alt="" />
+              <h5>{{ item.name }}</h5>
+              <p class="price">{{ item.price | currency }}</p>
+              <p
+                *ngIf="type != 'info' && type != 'delete'"
+                (click)="removeProduct(item.id)"
+              >
+                &times;
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <app-product-list
+        *ngIf="type != 'info' && type != 'delete'"
+        [selectedProducts]="selectedProducts"
+        (selectedProductsChange)="handleSelectedProduct($event)"
+      ></app-product-list>
+
+      <div class="actions" *ngIf="type == 'info'">
+        <button type="button">
+          <a [routerLink]="['/admin/collection']">Back</a>
+        </button>
+      </div>
+
+      <div class="actions" *ngIf="type == 'add'">
+        <button type="button">
+          <a [routerLink]="['/admin/collection']">Cancel</a>
+        </button>
+        <button type="submit">Add</button>
+      </div>
+
+      <div class="actions" *ngIf="type == 'edit'">
+        <button type="button">
+          <a [routerLink]="['/admin/collection']">Cancel</a>
+        </button>
+        <button type="submit">Update</button>
+      </div>
+
+      <div class="actions" *ngIf="type == 'delete'">
+        <button type="button">
+          <a [routerLink]="['/admin/collection']">Cancel</a>
+        </button>
+        <button type="submit">Delete</button>
+      </div>
+    </div>
+  </form>
+</div>

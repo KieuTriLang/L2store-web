@@ -1,0 +1,20 @@
+<div class="sort-select" *ngIf="sortList && sortList.length > 0">
+  <p class="selected" (click)="toggleList()">
+    Sort by:
+    {{ selectedSort.name }}
+    <fa-icon
+      [icon]="caretIcon"
+      [size]="'1x'"
+      [class.active]="isOpened"
+    ></fa-icon>
+  </p>
+  <div class="select-list" [class.active]="isOpened">
+    <div
+      class="select-item"
+      *ngFor="let sort of filterSort(sortList)"
+      (click)="selectSort(sort)"
+    >
+      {{ sort.name }}
+    </div>
+  </div>
+</div>

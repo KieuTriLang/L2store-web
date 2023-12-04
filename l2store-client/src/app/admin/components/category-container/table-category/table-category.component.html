@@ -1,0 +1,35 @@
+<div class="table">
+  <h4>
+    All Category
+    <a [routerLink]="['/admin/category/add']">Add category</a>
+  </h4>
+  <table>
+    <tr>
+      <th>Name</th>
+      <!-- <th>Locked</th> -->
+      <th></th>
+    </tr>
+    <tr *ngFor="let category of categories">
+      <td>{{ category.name }}</td>
+      <!-- <td>
+        <input
+          type="checkbox"
+          [attr.checked]="category.isLocked"
+          (click)="changeLocked(category.id)"
+        />
+      </td> -->
+      <td class="actions">
+        <app-table-actions
+          [url]="'/admin/category'"
+          [id]="category.id"
+        ></app-table-actions>
+      </td>
+    </tr>
+  </table>
+  <app-pagination
+    *ngIf="totalPage != 0"
+    [page]="page"
+    (pageChange)="handlePageChange($event)"
+    [totalPage]="totalPage"
+  ></app-pagination>
+</div>

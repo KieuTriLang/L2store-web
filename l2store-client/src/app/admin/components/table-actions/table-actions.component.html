@@ -1,0 +1,21 @@
+<div class="table-actions">
+  <a
+    *ngIf="actions.info"
+    [routerLink]="[url, 'info']"
+    [queryParams]="{ id: id }"
+    ><fa-icon [icon]="infoIcon" [size]="'1x'" title="Info"></fa-icon
+  ></a>
+  <a
+    *ngIf="actions.edit"
+    [routerLink]="[url, 'edit']"
+    [queryParams]="{ id: id }"
+    ><fa-icon [icon]="editIcon" [size]="'1x'" title="Edit"></fa-icon
+  ></a>
+
+  <a
+    *ngIf="actions.delete"
+    [routerLink]="[url, 'delete']"
+    [queryParams]="{ id: id }"
+    ><fa-icon [icon]="deleteIcon" [size]="'1x'" title="Delete"></fa-icon
+  ></a>
+</div>

@@ -1,0 +1,25 @@
+@use "/src/styles/variable" as *;
+
+.pagination {
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  & span {
+    font-size: 1.2rem;
+  }
+  & .content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.4rem;
+    & input {
+      width: 50px;
+      text-align: center;
+      font-size: 1.6rem;
+    }
+    & fa-icon {
+      cursor: pointer;
+    }
+  }
+}

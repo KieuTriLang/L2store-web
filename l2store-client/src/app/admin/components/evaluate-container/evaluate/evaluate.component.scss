@@ -1,0 +1,71 @@
+@use "/src//styles/variable" as *;
+
+table,
+th,
+td {
+  border: 2px solid $black-color;
+  border-collapse: collapse;
+  font-size: 1.6rem;
+}
+th {
+  background: $black-color;
+  color: $white-color;
+}
+th,
+td {
+  padding: 5px 10px;
+}
+td {
+  & img {
+    width: 40px;
+    aspect-ratio: 1;
+  }
+  &.categories {
+    & a {
+      margin: 0 0 0 15px;
+    }
+  }
+  &.actions {
+    & a {
+      font-size: 2.6rem;
+      & fa-icon {
+        margin: 0 0 0 10px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.table {
+  padding: 20px;
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+  & h4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    & .search-content {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      & label {
+        font-size: 1.4rem;
+      }
+      & input {
+        padding: 5px;
+        font-size: 1.4rem;
+      }
+    }
+    & p {
+      display: flex;
+      gap: 20px;
+      & span {
+        font-size: 1.4rem;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

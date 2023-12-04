@@ -1,0 +1,85 @@
+<div class="review-payment">
+  <app-section-title [title]="'Review before paying'" [center]="true">
+    <div class="content">
+      <div class="info-user part">
+        <h4>Payer</h4>
+        <p>
+          Email: <span>{{ reviewPayment.payerInfo.email }}</span>
+        </p>
+        <p>
+          Fullname:
+          <span
+            >{{ reviewPayment.payerInfo.firstName }}
+            {{ reviewPayment.payerInfo.lastName }}
+          </span>
+        </p>
+      </div>
+      <div class="info-order part">
+        <h4>Order detail</h4>
+        <div class="item-list">
+          <p *ngFor="let item of reviewPayment.transactions[0].itemList.items">
+            {{ item.name }} <span>{{ item.price }}</span
+            ><span>&times;</span><span>{{ item.quantity }}</span>
+          </p>
+        </div>
+      </div>
+      <div class="info-address part">
+        <h4>Shipping address</h4>
+        <p>
+          Recipient name:
+          <span>{{ reviewPayment.shippingAddress.recipientName }}</span>
+        </p>
+        <p>
+          Line 1: <span>{{ reviewPayment.shippingAddress.line1 }}</span>
+        </p>
+        <p>
+          City: <span>{{ reviewPayment.shippingAddress.city }}</span>
+        </p>
+        <p>
+          State: <span>{{ reviewPayment.shippingAddress.state }}</span>
+        </p>
+        <p>
+          Country code:
+          <span>{{ reviewPayment.shippingAddress.countryCode }}</span>
+        </p>
+        <p>
+          Postal code:
+          <span>{{ reviewPayment.shippingAddress.postalCode }}</span>
+        </p>
+      </div>
+      <div class="actions">
+        <button type="submit" (click)="excutePayment()">
+          <div class="loader" *ngIf="loading; else check">
+            <fa-icon [icon]="loadIcon" [size]="'2x'"></fa-icon>
+          </div>
+        </button>
+        <button type="button" (click)="cancel()">Cancel</button>
+      </div>
+      <div class="info-amount part">
+        <h4>Amount</h4>
+        <p>
+          Subtotal:
+          <span>{{
+            reviewPayment.transactions[0].amount.details.subtotal | currency
+          }}</span>
+        </p>
+        <p>
+          Shipping:
+          <span>{{
+            reviewPayment.transactions[0].amount.details.shipping | currency
+          }}</span>
+        </p>
+        <p>
+          Total:
+          <span>{{
+            reviewPayment.transactions[0].amount.total | currency
+          }}</span>
+        </p>
+      </div>
+    </div>
+  </app-section-title>
+</div>
+
+<ng-template #check>
+  <fa-icon [icon]="checkIcon" [size]="'2x'"></fa-icon>
+</ng-template>

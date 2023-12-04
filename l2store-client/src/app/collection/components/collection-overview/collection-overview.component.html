@@ -1,0 +1,29 @@
+<div class="collection-overview">
+  <a [routerLink]="['/collections', collectionOverview.id]" class="info">
+    <h5>{{ collectionOverview.name }}</h5>
+    <div class="price">
+      <div class="price-origin" *ngIf="collectionOverview.salesoff > 0">
+        <p>{{ collectionOverview.totalPrice | currency }}</p>
+        <span>-{{ collectionOverview.salesoff }}%</span>
+      </div>
+      <p class="price-final">
+        {{
+          collectionOverview.totalPrice
+            | applyDiscount: collectionOverview.salesoff
+            | currency
+        }}
+      </p>
+    </div>
+  </a>
+  <div class="image-list">
+    <img
+      *ngFor="let image of collectionOverview.productImages"
+      [src]="image"
+      [alt]="collectionOverview.name"
+    />
+    <div class="cover" [hover-class]="{ type: 'enter', className: 'active' }">
+      <div class="ribbon"></div>
+      <img src="assets/images/white-logo.png" alt="white-logo" />
+    </div>
+  </div>
+</div>

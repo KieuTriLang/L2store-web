@@ -1,0 +1,16 @@
+<div class="pagination">
+  <span>{{ page }} of {{ totalPage }} pages</span>
+  <div class="content">
+    <fa-icon
+      [icon]="angleLIcon"
+      [size]="'2x'"
+      (click)="changePage(-1)"
+    ></fa-icon>
+    <input type="number" (input)="inputChange($event)" [value]="page" />
+    <fa-icon
+      [icon]="angleRIcon"
+      [size]="'2x'"
+      (click)="changePage(1)"
+    ></fa-icon>
+  </div>
+</div>

@@ -1,0 +1,122 @@
+@use "/src/styles/variable" as *;
+
+.form-product {
+  padding: 20px;
+  display: flex;
+  flex-flow: column;
+  gap: 20px;
+  & form {
+    border: 2px solid $black-color;
+    & h4 {
+      padding: 5px;
+      background: $black-color;
+      color: $white-color;
+      text-align: center;
+    }
+    & .content {
+      padding: 15px;
+      display: grid;
+      grid-template-columns: 0.25fr 1fr 0.3fr;
+      gap: 25px;
+      & .image {
+        & input[type="file"] {
+          display: none;
+        }
+        & label {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          & img {
+            width: 200px;
+            aspect-ratio: 1;
+            object-fit: cover;
+          }
+        }
+      }
+      & .detail {
+        display: flex;
+        flex-flow: column wrap;
+        gap: 20px;
+        & .form-group {
+          flex: 1 1 auto;
+          display: flex;
+          flex-flow: column;
+          gap: 10px;
+          & label {
+            font-size: 1.4rem;
+          }
+          & input {
+            padding: 5px;
+            font-size: 1.4rem;
+          }
+          & textarea {
+            padding: 5px;
+            height: 48px;
+            font-size: 1.4rem;
+          }
+          & .category {
+            &-list {
+              display: flex;
+              flex-flow: row wrap;
+              gap: 25px;
+              & .form-control {
+                padding: 5px;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                border: 2px solid $black-color;
+
+                & span {
+                  cursor: pointer;
+                  font-size: 1.4rem;
+                }
+              }
+            }
+          }
+        }
+      }
+      & .reviews {
+        grid-column: 1 / span 3;
+        display: flex;
+        padding: 15px;
+        flex-flow: column;
+        gap: 15px;
+        & .review {
+          border-bottom: 2px solid rgba($black-color, 0.5);
+          display: flex;
+          flex-flow: column;
+          gap: 5px;
+          & .sub-content {
+            display: flex;
+            justify-content: space-between;
+          }
+        }
+      }
+      & .actions {
+        grid-column: 1 / span 3;
+        margin: 0 auto;
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        justify-content: center;
+        & button {
+          padding: 5px 10px;
+          font-size: 1.4rem;
+          background: transparent;
+          color: $black-color;
+          cursor: pointer;
+          &[type="button"] {
+            border: none;
+          }
+          &[type="submit"] {
+            border: 2px solid $black-color;
+            &:hover {
+              background: $black-color;
+              color: $white-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}

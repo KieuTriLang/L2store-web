@@ -1,0 +1,26 @@
+@use "/src/styles/variable" as *;
+
+.loading {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & .loader {
+    width: 45px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 3px solid rgba($white-color, 0.2);
+    border-top: rgba($black-color, 1);
+    border-left: rgba($black-color, 1);
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}

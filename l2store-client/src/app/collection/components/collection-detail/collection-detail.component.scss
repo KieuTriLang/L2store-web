@@ -1,0 +1,155 @@
+@use "/src/styles/variable" as *;
+.collection-detail {
+  height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 20px;
+  color: $white-color;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: rgba($white-color, 0.075);
+    border-radius: 5px;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: rgba($white-color, 0.125);
+    border-radius: 5px;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba($white-color, 0.25);
+  }
+  & .header {
+    display: flex;
+    justify-content: space-between;
+    & .info {
+      padding: 20px;
+      display: flex;
+      flex-flow: column;
+      gap: 15px;
+      background: rgba($black-color, 0.6);
+      box-shadow: 0 0 5px rgba($white-color, 0.1);
+      border-radius: 5px;
+      & .description {
+        font-size: 1.4rem;
+      }
+      & .price {
+        flex: 1 1 auto;
+        &-origin {
+          margin: 0 0 5px 0;
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: baseline;
+          gap: 10px;
+          & p {
+            color: rgba($white-color, 0.5);
+            font-size: 1rem;
+            text-decoration-line: line-through;
+          }
+          & span {
+            padding: 2.5px 7.5px;
+            font-size: 0.85rem;
+            background: rgba($danger-color, 1);
+            clip-path: polygon(
+              25% 0%,
+              100% 0,
+              85% 50%,
+              100% 100%,
+              25% 100%,
+              0% 50%
+            );
+          }
+        }
+        &-final {
+          margin: auto 0 0;
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          & span {
+            font-size: 0.75rem;
+          }
+        }
+      }
+    }
+    & .actions {
+      position: absolute;
+      top: 5%;
+      right: 5%;
+      padding: 20px;
+      display: flex;
+      flex-flow: column nowrap;
+      gap: 20px;
+      background: rgba($black-color, 0.6);
+      box-shadow: 0 0 5px rgba($white-color, 0.1);
+      z-index: 2;
+      border-radius: 5px;
+      & .quantity {
+        display: flex;
+        flex-flow: row nowrap;
+        & input {
+          width: 100px;
+          outline: none;
+          border: none;
+          background: transparent;
+          color: $white-color;
+          text-align: center;
+          font-size: 1.6rem;
+        }
+        & button {
+          width: 25px;
+          aspect-ratio: 1;
+          font-size: 1.6rem;
+          background: transparent;
+          border: 1px solid rgba($primary-color, 1);
+          color: $white-color;
+          border-radius: 5px;
+          cursor: pointer;
+          &:active {
+            background: $primary-color;
+          }
+        }
+      }
+      & .total {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        & span {
+          font-size: 1.4rem;
+        }
+      }
+      & > button[type="button"] {
+        margin: 0 auto;
+        padding: 8px 16px;
+        width: fit-content;
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: transparent;
+        border: 1px solid rgba($primary-color, 1);
+        color: $white-color;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover {
+          background: $primary-color;
+        }
+      }
+    }
+  }
+  & .content {
+    & .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 200px));
+      gap: 20px;
+      justify-content: center;
+    }
+  }
+}

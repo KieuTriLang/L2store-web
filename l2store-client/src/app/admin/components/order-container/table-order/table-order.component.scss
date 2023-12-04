@@ -1,0 +1,74 @@
+@use "/src//styles/variable" as *;
+
+table,
+th,
+td {
+  border: 2px solid $black-color;
+  border-collapse: collapse;
+  font-size: 1.6rem;
+}
+th {
+  background: $black-color;
+  color: $white-color;
+}
+th,
+td {
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+td {
+  position: relative;
+  & p {
+    font-size: 1.4rem;
+    text-align: left;
+    cursor: pointer;
+    &.selected-state {
+      text-decoration: underline;
+    }
+  }
+  & .order-state-list {
+    padding: 5px 0;
+    position: absolute;
+    display: none;
+    background: rgba($black-color, 1);
+    top: 100%;
+    left: 0;
+    color: $white-color;
+    z-index: 99;
+    &.active {
+      display: block;
+    }
+    & p {
+      padding: 5px 10px;
+      font-size: 1.2rem;
+      // cursor: pointer;
+      &:hover {
+        background: rgba($white-color, 0.25);
+      }
+    }
+  }
+  &.actions {
+    & a {
+      font-size: 2.6rem;
+      & fa-icon {
+        margin: 0 0 0 10px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.table {
+  padding: 20px;
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+  & h4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    & a:hover {
+      text-decoration: underline;
+    }
+  }
+}

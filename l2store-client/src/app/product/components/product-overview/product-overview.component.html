@@ -1,0 +1,36 @@
+<div class="product-overview">
+  <!-- <div class="bookmark"></div> -->
+  <a [routerLink]="['/products', productOverview.id]" class="content">
+    <img [src]="productOverview.image" [alt]="productOverview.name" />
+    <h5>{{ productOverview.name }}</h5>
+    <p class="rating">
+      {{ productOverview.averageRate }}
+      <fa-icon [icon]="starIcon" [size]="'1x'"></fa-icon>
+      <span *ngIf="productOverview.amountOfEvaluate > 0"
+        >({{ productOverview.amountOfEvaluate }})</span
+      >
+    </p>
+  </a>
+  <div class="categories">
+    <span *ngFor="let category of productOverview.categories">{{
+      category.name
+    }}</span>
+  </div>
+  <div class="bottom">
+    <div class="price">
+      <div class="price-origin" *ngIf="productOverview.salesoff > 0">
+        <p>{{ productOverview.price | currency }}</p>
+        <span>-{{ productOverview.salesoff }}%</span>
+      </div>
+      <p class="price-final">
+        {{
+          productOverview.price
+            | applyDiscount: productOverview.salesoff
+            | currency
+        }}
+        <span>{{ productOverview.sold }} sold</span>
+      </p>
+    </div>
+    <!-- <button><fa-icon [icon]="cartIcon" [size]="'2x'"></fa-icon></button> -->
+  </div>
+</div>

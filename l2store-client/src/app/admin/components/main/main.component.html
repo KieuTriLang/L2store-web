@@ -1,0 +1,64 @@
+<div class="main">
+  <div class="statistic-list">
+    <app-statistic [value]="totalUser" [name]="'User'"></app-statistic>
+    <app-statistic
+      [name]="'Product sold in '"
+      [icon]="cubeIcon"
+      [data]="productData"
+    ></app-statistic>
+    <app-statistic
+      [name]="'Collection sold in '"
+      [icon]="cubesIcon"
+      [data]="collectionData"
+    ></app-statistic>
+    <app-statistic
+      [name]="'Revenue in '"
+      [icon]="moneyIcon"
+      [data]="turnoverData"
+      [currency]="true"
+    ></app-statistic>
+  </div>
+  <div class="content-detail">
+    <div class="header">
+      <h3>Chart</h3>
+      <div class="actions">
+        <!-- <input type="text" placeholder="dd/mm/yyyy" />
+        To
+        <input type="text" placeholder="dd/mm/yyyy" /> -->
+      </div>
+      <div class="dropdown">
+        <p (click)="opened = !opened">
+          {{ time[timeIndexSelected] | titlecase }}
+        </p>
+        <div class="dropdown-list" [class.active]="opened">
+          <p
+            *ngFor="let value of time; let i = index"
+            (click)="timeIndexSelected = i; opened = false"
+          >
+            {{ value | titlecase }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="chart-list">
+      <app-chart
+        [title]="'Revenue'"
+        [data]="turnoverData"
+        [time]="time[timeIndexSelected]"
+        [id]="'turnover'"
+      ></app-chart>
+      <app-chart
+        [title]="'product'"
+        [data]="productData"
+        [time]="time[timeIndexSelected]"
+        [id]="'product'"
+      ></app-chart>
+      <app-chart
+        [title]="'collection'"
+        [data]="collectionData"
+        [time]="time[timeIndexSelected]"
+        [id]="'collection'"
+      ></app-chart>
+    </div>
+  </div>
+</div>

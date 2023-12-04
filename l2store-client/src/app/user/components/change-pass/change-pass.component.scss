@@ -1,0 +1,63 @@
+@use "/src/styles/variable" as *;
+
+.change-pass {
+  overflow: hidden;
+  padding: 35px;
+  & .error {
+    color: $danger-color;
+  }
+  & h2 {
+    text-align: center;
+  }
+  & form {
+    padding: 25px 0 0 0;
+    display: flex;
+    flex-flow: column;
+    gap: 25px;
+    & .form-group {
+      display: flex;
+      flex-flow: column;
+      gap: 10px;
+      & label {
+        font-size: 1.4rem;
+      }
+      & input {
+        padding: 5px;
+        font-size: 1.6rem;
+        outline: none;
+        border: none;
+        border-bottom: 2px solid rgba($white-color, 0.1);
+        background: rgba($white-color, 0.025);
+        color: $white-color;
+        &:focus {
+          border-bottom: 2px solid rgba($primary-color, 1);
+        }
+      }
+    }
+    & .actions {
+      margin: 10px 0 0 0;
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      justify-content: center;
+      & button {
+        padding: 5px 10px;
+        font-size: 1.4rem;
+        background: transparent;
+        color: $white-color;
+        cursor: pointer;
+        &[type="button"] {
+          border: none;
+        }
+        &[type="submit"] {
+          border: 2px solid $primary-color;
+          border-radius: 3px;
+          &:hover {
+            background: $primary-color;
+            color: $white-color;
+          }
+        }
+      }
+    }
+  }
+}

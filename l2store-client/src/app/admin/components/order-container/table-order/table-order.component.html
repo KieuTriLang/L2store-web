@@ -1,0 +1,66 @@
+<div class="table">
+  <h4>
+    All Order
+    <app-sort-by
+      [sortList]="sortList"
+      (sortItemSelected)="handleSort($event)"
+    ></app-sort-by>
+  </h4>
+  <table>
+    <tr>
+      <th>Order code</th>
+      <th>Buyer</th>
+      <th>Payer</th>
+      <th>Products</th>
+      <th>Collections</th>
+      <th>Total</th>
+      <th>Payed</th>
+      <th>Payment type</th>
+      <th>Created time</th>
+      <th>Payment time</th>
+      <th>Order state</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let order of orders; let i = index">
+      <td>{{ order.orderCode }}</td>
+      <td>{{ order.buyer }}</td>
+      <td>{{ order.payer }}</td>
+      <td>{{ order.amountOfProduct }}</td>
+      <td>{{ order.amountOfCombo }}</td>
+      <td>{{ order.total | currency }}</td>
+      <td>
+        <fa-icon *ngIf="order.payed" [icon]="checkIcon" [size]="'2x'"></fa-icon>
+      </td>
+      <td>{{ order.paymentType }}</td>
+      <td>{{ order.createdTime | date: "medium" }}</td>
+      <td>{{ order.paymentTime | date: "medium" }}</td>
+      <td>
+        <p class="selected-state" (click)="toggleOrderStateList(i)">
+          {{ order.orderState }}
+        </p>
+        <div class="order-state-list" [class.active]="i == orderStateListIndex">
+          <p
+            *ngFor="let state of orderStates"
+            (click)="changeOrderState(order.orderCode, state)"
+          >
+            {{ state }}
+          </p>
+        </div>
+      </td>
+
+      <td class="actions">
+        <app-table-actions
+          [url]="'/admin/order'"
+          [id]="order.id"
+          [actions]="{ info: true, edit: false, delete: false }"
+        ></app-table-actions>
+      </td>
+    </tr>
+  </table>
+  <app-pagination
+    *ngIf="totalPage != 0"
+    [page]="page"
+    [totalPage]="totalPage"
+    (pageChange)="handlePageChange($event)"
+  ></app-pagination>
+</div>

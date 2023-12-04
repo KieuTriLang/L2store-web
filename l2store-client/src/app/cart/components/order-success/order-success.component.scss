@@ -1,0 +1,22 @@
+@use "/src/styles/variable" as *;
+
+.order-success {
+  color: $white-color;
+  & .content {
+    margin: 40px 0 0 0;
+    display: flex;
+    flex-flow: column;
+    gap: 30px;
+    align-items: center;
+    & p {
+      font-style: italic;
+    }
+    & a {
+      color: $white-color;
+      text-decoration: underline;
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+}

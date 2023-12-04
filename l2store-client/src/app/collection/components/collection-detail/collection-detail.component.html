@@ -1,0 +1,52 @@
+<div class="collection-detail">
+  <div class="header">
+    <div class="info">
+      <h1>{{ collection.name }}</h1>
+      <p class="description">{{ collection.description }}</p>
+      <div class="price">
+        <div class="price-origin" *ngIf="collection.salesoff > 0">
+          <p>{{ collection.totalPrice | currency }}</p>
+          <span>-{{ collection.salesoff }}%</span>
+        </div>
+        <p class="price-final">
+          {{
+            collection.totalPrice
+              | applyDiscount: collection.salesoff
+              | currency
+          }}
+        </p>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="quantity">
+        <button type="button" (click)="handleQuantity(-1)">&minus;</button>
+        <input
+          type="number"
+          name="quantity"
+          [value]="cartItem.quantity"
+          (input)="handleInputQuantity($event)"
+        />
+        <button type="button" (click)="handleQuantity(1)">&plus;</button>
+      </div>
+      <p class="total">
+        Total:
+        <span>{{
+          collection.totalPrice * cartItem.quantity
+            | applyDiscount: collection.salesoff
+            | currency
+        }}</span>
+      </p>
+      <button type="button" (click)="addToCart()">
+        <fa-icon [icon]="cartIcon" [size]="'2x'"></fa-icon>
+      </button>
+    </div>
+  </div>
+  <div class="content">
+    <div class="product-list">
+      <app-product-overview
+        *ngFor="let product of collection.productOverviews"
+        [productOverview]="product"
+      ></app-product-overview>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+@use "/src/styles/variable" as *;
+
+.product-list {
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
+  & h4 {
+    padding: 5px;
+    text-align: center;
+    background: $black-color;
+    color: $white-color;
+  }
+  & .search-bar {
+    margin: 0 auto;
+    display: flex;
+    border: 2px solid $black-color;
+    & input {
+      flex: 2 1 auto;
+      padding: 5px;
+      font-size: 1.4rem;
+      outline: none;
+      border: none;
+    }
+    & button {
+      padding: 5px 10px;
+      flex: 1 1 auto;
+      font-size: 1.6rem;
+      border: none;
+      background: transparent;
+    }
+  }
+  & .content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    & .product-item {
+      padding: 10px;
+      border: 2px solid $black-color;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+      &.selected {
+        background: $black-color;
+        color: $white-color;
+      }
+      & img {
+        width: 100%;
+        aspect-ratio: 1;
+      }
+      & h5 {
+        font-size: 1rem;
+      }
+      & p {
+        margin: auto 0 0 0;
+      }
+      & p:last-child {
+        cursor: pointer;
+      }
+    }
+  }
+}

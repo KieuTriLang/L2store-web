@@ -1,0 +1,8 @@
+<div class="sort-by">
+  <p (click)="opened = !opened">Sort by: {{ selectedSort.name }}</p>
+  <div class="sort-list" [class.active]="opened">
+    <p *ngFor="let sort of filterSort(sortList)" (click)="selectSort(sort)">
+      {{ sort.name }}
+    </p>
+  </div>
+</div>

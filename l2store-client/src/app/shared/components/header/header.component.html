@@ -1,0 +1,69 @@
+<div class="header">
+  <div class="top">
+    <img src="assets/images/logo.png" alt="l2" />
+    <div
+      *ngIf="
+        authService.authenticatedState$ | async;
+        then authInfo;
+        else authAction
+      "
+    ></div>
+    <ng-template #authAction>
+      <div class="auth-list">
+        <a routerLink="/sign-in">Sign in</a>
+        <p>/</p>
+        <a routerLink="/sign-up">Sign up</a>
+      </div>
+    </ng-template>
+    <ng-template #authInfo>
+      <div class="auth-info">
+        <p>{{ authService.getUsername() }}</p>
+        <div class="action">
+          <a routerLink="/user">Profile</a>
+          <a (click)="logout()">Log out</a>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  <div class="nav">
+    <ul class="nav-list">
+      <li class="nav-item" routerLinkActive="active">
+        <a routerLink="/explore">Explore</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a routerLink="/products">Product</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a routerLink="/collections">Collection</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a routerLink="/my-cart" (click)="cartService.cartUpdate.next(false)"
+          >My cart
+          <fa-icon
+            [icon]="dotIcon"
+            [size]="'1x'"
+            *ngIf="cartService.cartUpdate$ | async"
+          ></fa-icon
+        ></a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a routerLink="/history">History</a>
+      </li>
+    </ul>
+  </div>
+  <div class="social">
+    <div class="fanpage">
+      <a href="" target="_blank">
+        <fa-icon [icon]="facebookIcon" [size]="sizeIcon"></fa-icon>
+      </a>
+      <a href="" target="_blank">
+        <fa-icon [icon]="instagramIcon" [size]="sizeIcon"></fa-icon>
+      </a>
+      <a href="" target="_blank">
+        <fa-icon [icon]="twitterIcon" [size]="sizeIcon"></fa-icon>
+      </a>
+    </div>
+    <div class="contact">+84373004977</div>
+  </div>
+  <app-footer></app-footer>
+</div>

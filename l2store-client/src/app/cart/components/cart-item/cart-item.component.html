@@ -1,0 +1,16 @@
+<div class="cart-item" [class.odd]="index % 2 != 0">
+  <div class="name">{{ item.name }}</div>
+  <div class="price">{{ item.price | currency }}</div>
+  <div class="quantity">
+    <button type="button" (click)="handleQuantity(-1)">&minus;</button>
+    <input
+      type="number"
+      [value]="item.quantity"
+      (input)="handleInputQuantity($event)"
+    />
+    <button type="button" (click)="handleQuantity(1)">&plus;</button>
+  </div>
+  <button type="button" class="remove" (click)="remove(item.id)">
+    &times;
+  </button>
+</div>

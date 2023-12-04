@@ -1,0 +1,7 @@
+<div class="section-title">
+  <div class="title" [class.center]="center">
+    <h1>{{ prefix }} {{ title }}</h1>
+    <a routerLink="{{ seeMore }}" *ngIf="seeMore.length > 0">See more ></a>
+  </div>
+  <ng-content></ng-content>
+</div>

@@ -1,0 +1,97 @@
+<div class="form-user">
+  <h4>{{ type | titlecase }}</h4>
+  <form *ngIf="type == 'edit'">
+    <div class="form-group">
+      <label for="">Fistname</label>
+      <input type="text" name="firstname" id="firstname" />
+    </div>
+    <div class="form-group">
+      <label for="">Lastname</label>
+      <input type="text" name="lastname" id="lastname" />
+    </div>
+    <div class="form-group gender-group">
+      <div class="form-control">
+        <input type="radio" name="gender" id="gender" />
+        <label for="">Male</label>
+      </div>
+      <div class="form-control">
+        <input type="radio" name="gender" id="gender" />
+        <label for="">Female</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">Email</label>
+      <input type="text" name="email" id="email" />
+    </div>
+    <div class="form-group">
+      <label for="">Date of birth</label>
+      <input type="date" name="dob" id="dob" />
+    </div>
+    <div class="form-group">
+      <label for="">Address</label>
+      <input type="text" name="address" id="address" />
+    </div>
+    <div class="actions">
+      <button type="button">
+        <a [routerLink]="['/admin/user']">Cancel</a>
+      </button>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+  <form *ngIf="type == 'delete'">
+    <div class="form-group">
+      <label for="">Fistname</label>
+      <input
+        type="text"
+        name="firstname"
+        id="firstname"
+        disabled
+        value="kieutri"
+      />
+    </div>
+    <div class="form-group">
+      <label for="">Lastname</label>
+      <input type="text" name="lastname" id="lastname" disabled value="lang" />
+    </div>
+    <div class="form-group gender-group">
+      <div class="form-control">
+        <input type="radio" name="gender" id="gender" disabled checked />
+        <label for="">Male</label>
+      </div>
+      <div class="form-control">
+        <input type="radio" name="gender" id="gender" disabled />
+        <label for="">Female</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">Email</label>
+      <input
+        type="text"
+        name="email"
+        id="email"
+        disabled
+        value="kieutrilang@gmail.com"
+      />
+    </div>
+    <div class="form-group">
+      <label for="">Date of birth</label>
+      <input type="date" name="dob" id="dob" disabled value="2002-06-16" />
+    </div>
+    <div class="form-group">
+      <label for="">Address</label>
+      <input
+        type="text"
+        name="address"
+        id="address"
+        disabled
+        value="Dai Dong,Thach That"
+      />
+    </div>
+    <div class="actions">
+      <button type="button">
+        <a [routerLink]="['/admin/user']">Cancel</a>
+      </button>
+      <button type="submit">Delete</button>
+    </div>
+  </form>
+</div>

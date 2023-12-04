@@ -1,0 +1,317 @@
+@use "/src/styles/variable" as *;
+.product-detail {
+  position: relative;
+  height: 100vh;
+  padding: 20px;
+  color: $white-color;
+  overflow: hidden;
+  & .image {
+    position: absolute;
+    inset: 0 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    & img {
+      max-width: 500px;
+      width: 75%;
+      aspect-ratio: 1;
+    }
+  }
+  & .info {
+    padding: 20px;
+    position: absolute;
+    width: 500px;
+    top: 5%;
+    left: 5%;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 20px;
+    background: rgba($black-color, 0.6);
+    border-radius: 5px;
+    z-index: 2;
+
+    box-shadow: 0 0 5px rgba($white-color, 0.1);
+    & .title {
+      flex: 1 1 auto;
+      padding: 0 0 10px 0;
+      border-bottom: 2px solid rgba($primary-color, 1);
+      & h2 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        & fa-icon {
+          cursor: pointer;
+        }
+      }
+      & .rating {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        & .star {
+          margin: 5px 0 0 0;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          font-size: 1.4rem;
+        }
+        & .evaluate {
+          font-size: 1.2rem;
+          cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    & .detail {
+      width: 0;
+      height: 0;
+      font-size: 1.4rem;
+      line-height: 2.4rem;
+      overflow: hidden;
+    }
+    & .price {
+      flex: 1 1 auto;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      &-origin {
+        margin: 0 0 5px 0;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: baseline;
+        gap: 10px;
+        & p {
+          color: rgba($white-color, 0.5);
+          font-size: 1.2rem;
+          text-decoration-line: line-through;
+        }
+        & span {
+          padding: 2.5px 7.5px;
+          font-size: 0.85rem;
+          background: rgba($danger-color, 1);
+          clip-path: polygon(
+            25% 0%,
+            100% 0,
+            85% 50%,
+            100% 100%,
+            25% 100%,
+            0% 50%
+          );
+        }
+      }
+      &-final {
+        font-size: 2.4rem;
+      }
+    }
+  }
+  &.active {
+    & .info {
+      flex-flow: column;
+      & .detail {
+        width: 100%;
+        height: fit-content;
+      }
+      & .price {
+        align-items: flex-start;
+      }
+    }
+  }
+  & .action {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    padding: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 20px;
+    background: rgba($black-color, 0.6);
+    box-shadow: 0 0 5px rgba($white-color, 0.1);
+    z-index: 2;
+    border-radius: 5px;
+    & .quantity {
+      display: flex;
+      flex-flow: row nowrap;
+      & input {
+        width: 100px;
+        outline: none;
+        border: none;
+        background: transparent;
+        color: $white-color;
+        text-align: center;
+        font-size: 1.6rem;
+      }
+      & button {
+        width: 25px;
+        aspect-ratio: 1;
+        font-size: 1.6rem;
+        background: transparent;
+        border: 1px solid rgba($primary-color, 1);
+        color: $white-color;
+        border-radius: 5px;
+        cursor: pointer;
+        &:active {
+          background: $primary-color;
+        }
+      }
+    }
+    & .total {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      & span {
+        font-size: 1.4rem;
+      }
+    }
+    & > button[type="button"] {
+      margin: 0 auto;
+      padding: 8px 16px;
+      width: fit-content;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      border: 1px solid rgba($primary-color, 1);
+      color: $white-color;
+      border-radius: 5px;
+      cursor: pointer;
+      &:hover {
+        background: $primary-color;
+      }
+    }
+  }
+  & .review {
+    padding: 15px 15px 0 15px;
+    position: absolute;
+    inset: 90% 5% 0 5%;
+    background: rgba($black-color, 1);
+    box-shadow: 0 0 5px rgba($white-color, 0.1);
+    border-radius: 5px 5px 0 0;
+    z-index: 1;
+    overflow: hidden;
+    transition: inset cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+    &.active {
+      inset: 35% 5% 0 5%;
+    }
+    & .title {
+      margin: 0 0 15px 0;
+      height: 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid rgba($primary-color, 1);
+      & h3 {
+        cursor: pointer;
+      }
+      & button {
+        width: fit-content;
+        font-size: 1.4rem;
+        color: $primary-color;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    & .add-review {
+      position: absolute;
+      padding: 20px;
+      inset: 0 0 0 0;
+      translate: 100% 0;
+      background: $black-color;
+      z-index: 2;
+      transition: translate cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+      &.active {
+        translate: 0 0;
+      }
+      & .back {
+        margin: 0 0 20px 0;
+        font-size: 1.6rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        & span {
+          margin: 0 auto;
+          font-size: 1.8rem;
+          font-weight: 700;
+        }
+      }
+      & .main {
+        display: flex;
+        gap: 20px;
+        & img {
+          max-width: 40px;
+          max-height: 40px;
+          width: 40px;
+          flex: 1 1 auto;
+          aspect-ratio: 1;
+          object-fit: cover;
+          background: $primary-color;
+          border-radius: 50%;
+        }
+        & .content {
+          flex: 1 1 auto;
+          display: flex;
+          flex-flow: column nowrap;
+          gap: 10px;
+          & textarea {
+            background: rgba($white-color, 0.05);
+            color: $white-color;
+            border: none;
+            padding: 10px;
+            font-size: 1.4rem;
+            border-radius: 5px;
+            height: 200px;
+            &:focus {
+              outline: 0.5px solid $primary-color;
+            }
+          }
+          & button {
+            width: fit-content;
+            padding: 8px 16px;
+            margin: 0 0 0 auto;
+            font-size: 1.2rem;
+            background: transparent;
+            border: 1px solid rgba($primary-color, 1);
+            color: $white-color;
+            border-radius: 5px;
+            cursor: pointer;
+            &:hover {
+              background: $primary-color;
+            }
+          }
+        }
+      }
+    }
+    & .evaluate-list {
+      height: 300px;
+      overflow: auto;
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      /* Track */
+      &::-webkit-scrollbar-track {
+        background: rgba($white-color, 0.075);
+        border-radius: 5px;
+      }
+
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background: rgba($white-color, 0.125);
+        border-radius: 5px;
+      }
+
+      /* Handle on hover */
+      &::-webkit-scrollbar-thumb:hover {
+        background: rgba($white-color, 0.25);
+      }
+    }
+  }
+}

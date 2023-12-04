@@ -1,0 +1,59 @@
+@use "/src/styles/variable" as *;
+.history-detail {
+  color: $white-color;
+  padding: 30px 20px;
+  height: 100vh;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: rgba($white-color, 0.075);
+    border-radius: 5px;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: rgba($white-color, 0.125);
+    border-radius: 5px;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba($white-color, 0.25);
+  }
+  & a {
+    margin: 0 0 20px 0;
+    color: $white-color;
+  }
+  & .content {
+    padding: 10px;
+    margin: 0 auto;
+    width: 75%;
+    border: 2px solid $white-color;
+    border-radius: 5px;
+    & .part {
+      padding: 15px;
+      border-bottom: 2px solid rgba($white-color, 0.25);
+      display: flex;
+      flex-flow: column;
+      gap: 7.5px;
+      & h4 {
+        text-transform: uppercase;
+      }
+      & p {
+        font-size: 1.4rem;
+        display: flex;
+        gap: 10px;
+        & span {
+          &:first-of-type {
+            margin: 0 0 0 auto;
+          }
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}

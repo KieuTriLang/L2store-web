@@ -1,0 +1,27 @@
+<div class="product" (scroll)="handleScroll($event)">
+  <app-search-bar
+    (searchTextChange)="onSearchTextEntered($event)"
+    (submitStateChange)="handleSubmitSearch($event)"
+  ></app-search-bar>
+  <app-filter-bar (productFilterChange)="handleFilter($event)"></app-filter-bar>
+  <app-sort-select
+    [sortList]="sortList"
+    (sortItemSelected)="handleSort($event)"
+  ></app-sort-select>
+  <div
+    class="product-list"
+    *ngIf="products && products.length > 0; else notfound"
+  >
+    <app-product-overview
+      *ngFor="let product of products"
+      [productOverview]="product"
+    ></app-product-overview>
+  </div>
+  <app-loading *ngIf="loading"></app-loading>
+</div>
+
+<ng-template #notfound>
+  <div *ngIf="!loading" class="notfound">
+    <p>No matching search results</p>
+  </div>
+</ng-template>

@@ -1,0 +1,19 @@
+@use "/src/styles/variable" as *;
+
+.not-found {
+  height: 100vh;
+  background: $black-color;
+  color: $white-color;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  & h1 {
+    font-size: 36rem;
+  }
+  & a {
+    color: $white-color;
+    text-decoration: underline;
+  }
+}

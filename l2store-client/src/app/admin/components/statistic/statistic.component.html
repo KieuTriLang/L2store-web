@@ -1,0 +1,23 @@
+<div class="statistic" (click)="changeTimeIndexSelected()">
+  <div class="content">
+    <p class="value">
+      {{
+        value ||
+          (currency ? "$" : "") +
+            (data
+              ? (groupBy(time[timeIndexSelected])[
+                  convertKey(time[timeIndexSelected], dateNow())
+                ] | number: "1.0-3")
+              : 0)
+      }}
+    </p>
+    <h4>
+      {{
+        name == "User"
+          ? name
+          : name + convertKey(time[timeIndexSelected], dateNow())
+      }}
+    </h4>
+  </div>
+  <fa-icon [icon]="icon" [size]="'2x'"></fa-icon>
+</div>

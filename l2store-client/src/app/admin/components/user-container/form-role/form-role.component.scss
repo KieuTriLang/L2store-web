@@ -1,0 +1,54 @@
+@use "/src/styles/variable" as *;
+.form-user {
+  margin: 30px 0 0 0;
+  border: 2px solid $black-color;
+  & h4 {
+    padding: 5px;
+    background: $black-color;
+    color: $white-color;
+    text-align: center;
+  }
+  & form {
+    padding: 15px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    & .form-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      & input[type="checkbox"] {
+        accent-color: $black-color;
+      }
+      & label {
+        font-size: 1.4rem;
+      }
+    }
+    & .actions {
+      margin: 10px 0 0 0;
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      justify-content: center;
+      & button {
+        padding: 5px 10px;
+        font-size: 1.4rem;
+        background: transparent;
+        color: $black-color;
+        cursor: pointer;
+        &[type="button"] {
+          border: none;
+        }
+        &[type="submit"] {
+          border: 2px solid $black-color;
+          &:hover {
+            background: $black-color;
+            color: $white-color;
+          }
+        }
+      }
+    }
+  }
+}

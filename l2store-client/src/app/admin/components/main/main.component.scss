@@ -1,0 +1,55 @@
+@use "/src/styles/variable" as *;
+.main {
+  padding: 20px;
+  & .statistic-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 20px;
+  }
+  & .content-detail {
+    margin-top: 25px;
+    & .header {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      & .actions {
+        margin-left: auto;
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        & input {
+          outline: none;
+          border: 2px solid rgba($black-color, 1);
+          font-size: 1.4rem;
+          padding: 5px;
+        }
+      }
+      & .dropdown {
+        position: relative;
+        border: 2px solid rgba($black-color, 1);
+        padding: 5px 10px;
+        cursor: pointer;
+        &-list {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: max-content;
+          border: 2px solid rgba($black-color, 1);
+          &.active {
+            display: block;
+          }
+          & p {
+            padding: 5px 10px;
+            color: rgba($white-color, 1);
+            background: rgba($black-color, 1);
+            &:hover {
+              background: rgba($black-color, 0.5);
+            }
+          }
+        }
+      }
+    }
+  }
+}

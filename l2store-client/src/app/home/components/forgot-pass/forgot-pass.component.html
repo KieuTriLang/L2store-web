@@ -1,0 +1,35 @@
+<div class="forgot-password">
+  <app-section-title [title]="'Forgot the password'" [center]="true">
+    <p class="subtitle">
+      Enter the email address you used when you joined and we’ll send you
+      instructions to reset your password.
+    </p>
+    <p class="subtitle">
+      For security reasons, we do NOT store your password. So rest assured that
+      we will never send your password via email.
+    </p>
+    <form
+      class="form"
+      [formGroup]="form"
+      (submit)="submit()"
+      *ngIf="!sendSuccess; else success"
+    >
+      <label for="">Email address</label>
+      <input type="text" formControlName="email" formControlName="email" />
+      <button type="submit">
+        <div class="loader" *ngIf="loading; else text">
+          <fa-icon [icon]="loadingIcon" [size]="'2x'"></fa-icon>
+        </div>
+      </button>
+    </form>
+  </app-section-title>
+</div>
+
+<ng-template #success>
+  <div class="content">
+    <p>Successfully!</p>
+    <p>Reset link is sent to {{ form.controls["email"].value }}</p>
+  </div>
+</ng-template>
+
+<ng-template #text> Send Reset Instructions </ng-template>

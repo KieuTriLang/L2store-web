@@ -1,0 +1,129 @@
+<div class="filter-bar" [class.active]="isExpandedFilter">
+  <div class="title" (click)="toggleExpandedFilter()">
+    <fa-icon [icon]="filterIcon" [size]="'3x'"></fa-icon>
+    <p>Filter</p>
+    <fa-icon
+      [icon]="expandedIcon"
+      [size]="'2x'"
+      class="expanded-icon"
+    ></fa-icon>
+  </div>
+  <div class="content">
+    <form class="form" (submit)="submitFilter()" [formGroup]="form">
+      <div class="form-group">
+        <div class="title">Categories</div>
+        <div class="options" (scroll)="handleScroll($event)">
+          <div class="form-control" *ngFor="let category of categories">
+            <label for="">{{ category.name }}</label>
+            <input
+              type="checkbox"
+              name="categoryNames"
+              id=""
+              [value]="category.name"
+              (change)="updateCategoryNames($event)"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="title">Star</div>
+        <div class="options">
+          <div class="form-control">
+            <label for=""
+              >1<fa-icon [icon]="starIcon" [size]="'1x'"></fa-icon
+            ></label>
+            <input
+              type="radio"
+              name="star"
+              id=""
+              value="1"
+              formControlName="star"
+            />
+          </div>
+          <div class="form-control">
+            <label for=""
+              >2<fa-icon [icon]="starIcon" [size]="'1x'"></fa-icon
+            ></label>
+            <input
+              type="radio"
+              name="star"
+              id=""
+              value="2"
+              formControlName="star"
+            />
+          </div>
+          <div class="form-control">
+            <label for=""
+              >3<fa-icon [icon]="starIcon" [size]="'1x'"></fa-icon
+            ></label>
+            <input
+              type="radio"
+              name="star"
+              id=""
+              value="3"
+              formControlName="star"
+            />
+          </div>
+          <div class="form-control">
+            <label for=""
+              >4<fa-icon [icon]="starIcon" [size]="'1x'"></fa-icon
+            ></label>
+            <input
+              type="radio"
+              name="star"
+              id=""
+              value="4"
+              formControlName="star"
+            />
+          </div>
+          <div class="form-control">
+            <label for=""
+              >5<fa-icon [icon]="starIcon" [size]="'1x'"></fa-icon
+            ></label>
+            <input
+              type="radio"
+              name="star"
+              id=""
+              value="5"
+              formControlName="star"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="title">Price</div>
+        <div class="range">
+          <div class="form-control">
+            <label for="">From</label>
+            <input
+              type="text"
+              name="priceStart"
+              id=""
+              value=""
+              autocomplete="off"
+              placeholder="0"
+              formControlName="priceStart"
+            />
+          </div>
+          <div class="form-control">
+            <label for="">to</label>
+            <input
+              type="text"
+              name="priceEnd"
+              id=""
+              value=""
+              autocomplete="off"
+              placeholder="1,000,000"
+              formControlName="priceEnd"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <!-- <button type="button" (click)="reset()">Reset</button> -->
+        <button type="submit" (click)="toggleExpandedFilter()">Apply</button>
+      </div>
+    </form>
+  </div>
+</div>

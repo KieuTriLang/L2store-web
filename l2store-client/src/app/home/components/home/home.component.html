@@ -1,0 +1,56 @@
+<div class="home-container">
+  <!-- <app-section-title [prefix]="'#'" [title]="'Trending'">
+    <div class="trending-list">
+      <a routerLink="" class="trending-item">
+        <p>Neckleck</p>
+      </a>
+      <a routerLink="" class="trending-item">
+        <p>Earing</p>
+      </a>
+      <a routerLink="" class="trending-item">
+        <p>super</p>
+      </a>
+      <a routerLink="" class="trending-item">
+        <p>gold sjc 1999</p>
+      </a>
+      <a routerLink="" class="trending-item">
+        <p>gold sjc 1999</p>
+      </a>
+    </div>
+  </app-section-title> -->
+
+  <app-section-title
+    [prefix]="'#'"
+    [title]="'best selling'"
+    [seeMore]="'/products'"
+  >
+    <div
+      class="overview-list"
+      *ngIf="topProducts && topProducts.length > 0; else loader"
+    >
+      <app-product-overview
+        *ngFor="let product of topProducts"
+        [productOverview]="product"
+      ></app-product-overview>
+    </div>
+  </app-section-title>
+
+  <app-section-title
+    [prefix]="'#'"
+    [title]="'hot collection'"
+    [seeMore]="'/collections'"
+  >
+    <div
+      class="collection-list"
+      *ngIf="topCollections && topCollections.length > 0; else loader"
+    >
+      <app-collection-overview
+        *ngFor="let collection of topCollections"
+        [collectionOverview]="collection"
+      ></app-collection-overview>
+    </div>
+  </app-section-title>
+</div>
+<ng-template #loader>
+  <app-loading></app-loading>
+</ng-template>

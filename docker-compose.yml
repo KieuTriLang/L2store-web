@@ -1,0 +1,59 @@
+version: "3.7"
+services:
+  mysql-database:
+    container_name: mysql-database
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: kieutrilang
+      MYSQL_DATABASE: l2store
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./L2Data/l2store.sql:/docker-entrypoint-initdb.d/init-db.sql
+    networks:
+      - l2store-network
+  phpmyadmin8-container:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin8-container
+    restart: always
+    depends_on:
+      - mysql-database
+    ports:
+      - "8118:80"
+    environment:
+      PMA_HOST: mysql-database
+    networks:
+      - l2store-network
+  l2store-backend-container:
+    container_name: l2store-backend-container
+    build:
+      context: .
+      dockerfile: DockerfileSpring
+    ports:
+      - "8080:8080"
+    restart: always
+    environment:
+      MYSQL_HOST: mysql-database
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE_NAME: l2store
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: kieutrilang
+    depends_on:
+      - mysql-database
+    networks:
+      - l2store-network
+  l2store-frontend-container:
+    container_name: l2store-frontend-container
+    build:
+      context: .
+      dockerfile: DockerfileAngular
+    ports:
+      - "4200:80"
+    restart: always
+    networks:
+      - l2store-network
+networks:
+  l2store-network:
+    name: l2store-network
+    driver: bridge

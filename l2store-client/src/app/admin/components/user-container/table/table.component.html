@@ -1,0 +1,40 @@
+<div class="table">
+  <h4>All User</h4>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Address</th>
+      <th>Dob</th>
+      <th>Roles</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let user of users">
+      <td>
+        {{
+          user.firstName && user.lastName
+            ? user.firstName + " " + user.lastName
+            : "-- empty --"
+        }}
+      </td>
+      <td>{{ user.gender ? "Male" : "Female" }}</td>
+      <td>{{ user.address || "-- empty --" }}</td>
+      <td>{{ user.dob ? (user.dob | date: "mediumDate") : "-- empty --" }}</td>
+      <td class="roles">
+        <span *ngFor="let role of user.roles">{{ role.name }},</span>
+      </td>
+      <td class="actions">
+        <!-- <app-table-actions
+          [url]="'/admin/product'"
+          [id]="product.id"
+        ></app-table-actions> -->
+      </td>
+    </tr>
+  </table>
+  <app-pagination
+    *ngIf="totalPage != 0"
+    [page]="page"
+    [totalPage]="totalPage"
+    (pageChange)="handlePageChange($event)"
+  ></app-pagination>
+</div>

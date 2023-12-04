@@ -1,0 +1,22 @@
+<div class="collection" (scroll)="handleScroll($event)">
+  <app-search-bar
+    (searchTextChange)="onSearchTextEntered($event)"
+    (submitStateChange)="handleSubmitSearch($event)"
+  ></app-search-bar>
+  <div
+    class="collection-list"
+    *ngIf="collections && collections.length > 0; else notfound"
+  >
+    <app-collection-overview
+      *ngFor="let collection of collections"
+      [collectionOverview]="collection"
+    ></app-collection-overview>
+    <app-loading *ngIf="loading"></app-loading>
+  </div>
+</div>
+
+<ng-template #notfound>
+  <div *ngIf="!loading" class="notfound">
+    <p>No matching search results</p>
+  </div>
+</ng-template>

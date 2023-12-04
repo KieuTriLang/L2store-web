@@ -1,0 +1,8 @@
+@use "/src/styles/variable" as *;
+
+.category {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 0 300px;
+  gap: 20px;
+}

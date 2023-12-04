@@ -1,0 +1,19 @@
+FROM node:20-alpine3.17 AS builder
+
+WORKDIR /app
+
+COPY ./l2store-client/package*.json package.json
+
+RUN npm install
+
+COPY ./l2store-client/ .
+
+RUN npm run build --prod
+
+FROM nginx:alpine
+
+COPY --from=builder /app/dist/l2store-client /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx","-g","daemon off;"]

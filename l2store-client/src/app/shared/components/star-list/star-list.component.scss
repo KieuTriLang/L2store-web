@@ -1,0 +1,9 @@
+.star-list {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  & fa-icon {
+    cursor: pointer;
+  }
+}

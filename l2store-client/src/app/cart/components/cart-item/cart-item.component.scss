@@ -1,0 +1,61 @@
+@use "/src/styles/variable" as *;
+.cart-item {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid rgba($primary-color, 0.25);
+  &.odd {
+    background: rgba($white-color, 0.05);
+  }
+  & div {
+    font-size: 1.4rem;
+  }
+  & .name {
+    width: 50%;
+  }
+  & .price {
+    width: 20%;
+  }
+  & .quantity {
+    display: flex;
+    flex-flow: row nowrap;
+    & input {
+      width: 50px;
+      outline: none;
+      border: none;
+      background: transparent;
+      color: $white-color;
+      text-align: center;
+      font-size: 1.6rem;
+    }
+    & button {
+      width: 25px;
+      aspect-ratio: 1;
+      font-size: 1.6rem;
+      background: transparent;
+      border: 1px solid rgba($primary-color, 1);
+      color: $white-color;
+      border-radius: 5px;
+      cursor: pointer;
+      &:active {
+        background: $primary-color;
+      }
+    }
+  }
+  & .remove {
+    margin: 0 0 0 auto;
+    width: 20px;
+    aspect-ratio: 1;
+    font-size: 1.4rem;
+    color: $white-color;
+    border: none;
+    // background: rgba($danger-color, 0.75);
+    background: transparent;
+    cursor: pointer;
+    &:hover,
+    &:active {
+      // background: rgba($danger-color, 1);
+      scale: 1.2;
+    }
+  }
+}

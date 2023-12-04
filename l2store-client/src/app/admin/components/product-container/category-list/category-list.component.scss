@@ -1,0 +1,27 @@
+@use "/src/styles/variable" as *;
+
+.category-list {
+  & h4 {
+    color: $white-color;
+    background: $black-color;
+    text-align: center;
+    padding: 5px;
+  }
+  & .content {
+    padding: 15px;
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+    & .item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      & input {
+        accent-color: $black-color;
+      }
+      & label {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+@use "/src/styles/variable" as *;
+.forgot-password {
+  color: $white-color;
+  & .subtitle {
+    width: 60%;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 1.4rem;
+  }
+  .form {
+    margin: 50px auto;
+    width: 75%;
+    max-width: 300px;
+    display: flex;
+    flex-flow: column;
+    gap: 25px;
+    & label {
+      color: $white-color;
+      font-size: 1.4rem;
+    }
+    & input {
+      padding: 5px;
+      border: none;
+      background: rgba($white-color, 0.1);
+      outline: none;
+      font-size: 1.6rem;
+      color: $white-color;
+      border-radius: 5px;
+      &:focus {
+        outline: 1px solid rgba($primary-color, 1);
+        box-shadow: 0 0 20px rgba($primary-color, 1);
+      }
+    }
+    & button {
+      border-radius: 5px;
+      margin: 0 0 0 auto;
+      padding: 8px 16px;
+      background: rgba($primary-color, 1);
+      border: none;
+      font-size: 1.4rem;
+      color: rgba($white-color, 1);
+      cursor: pointer;
+      &:hover {
+        background: rgba($primary-color, 0.75);
+      }
+      & .loader {
+        animation: spin 1s linear infinite;
+      }
+    }
+  }
+  & .content {
+    margin: 40px;
+    text-align: center;
+    font-style: italic;
+  }
+}
+@keyframes spin {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
