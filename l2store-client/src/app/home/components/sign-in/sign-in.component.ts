@@ -27,8 +27,8 @@ export class SignInComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      email: ['kieutrilang@gmail.com', [Validators.required, Validators.email]],
-      password: ['123456', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
       remember: true,
     });
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/explore';
